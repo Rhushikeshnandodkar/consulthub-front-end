@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const NavbarStyle = styled.div`
    .navbar-section{
-    box-shadow: 0 2px 4px rgba(33, 51, 67, 0.048)
+    box-shadow: 0 2px 4px rgba(33, 51, 67, 0.048);
+    
    }
    .navbar{
     display: grid;
@@ -55,34 +56,185 @@ export const NavbarStyle = styled.div`
     border: none;
     border-radius: 2px;
     font-weight: 500;
+    font-family:  'Raleway', sans-serif;
+   }
+   .burger{
+    display: none;
+   }
+   .response-bar{
+    /* display: none; */
+    position: fixed;
+    
+   }
+   .burger-cut{
+    display: none;
+   }
+   .response-bar{
+    left: -100%;
+   }
+   @media screen and (max-width:1000px) {
+    .menu-section ul{
+        display: none;
+        margin: 0;
+        padding: 0;
+    }
+    .response-bar ul li{
+        list-style: none;
+        margin-left: -6%;
+        padding: 0;
+    }
+    .navbar{
+        width: 90%;
+    }
+    .navbar-section .button-section{
+        
+        display: none;
+    }
+    .logo-section h3{
+        font-size: 1.4rem;
+    }
+    .burger{
+        display: block;
+        transition: 1s ease;
+    }
+    .burger-cut{
+        display: none;
+    }
+    .burger-cut.cuticon{
+        display: block;
+    }
+    .burger.remove{
+        display: none;
+    }
+    .burger svg{
+        font-size: 2rem;
+        width: 30px;
+    }
+    .burger-cut svg{
+        font-size: 2rem;
+        width: 30px;
+    }
+    .burger button{
+        background-color: white;
+        border: none;
+    }
+    .burger-cut button{
+        background-color: white;
+        border: none;
+    }
+    .response-bar{
+        background-color: #f2f2f2;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        transition: 1s ease;
+    }
+    .response-bar.open{
+        left: 0;
+    }
+    .response-bar .logo-section{
+        margin-left: 10%;
+    }
+    .response-bar ul li{
+        margin-bottom: 10%;
+    }
+    .response-bar ul li a{
+        color: black;
+        text-decoration: none;
+    }
+    .response-bar .button-section{
+        float: left;
+    }
+    .response-bar .button-section button{
+        background-color: #f2f2f2;
+        color: #6000F9;
+        border: 1px solid #6000F9;
+    }
+    .response-bar .logo-section{
+        display: flex;
+        justify-content: space-between;
+        width: 85%;
+    }
    }
 `;
 
-export const SearchStyle = styled.div`
-    .search-bar{
-        display: grid;
-        grid-template-columns: 86% 15%;
-        width: 75%;
-        margin: 2% auto;
-        align-items: center;
-    }
-    .search-field input{
-        width: 100%;
-        padding: 0.8% 0% 0.8% 0%;
-        font-size: 1rem;
-        border: 1px solid lightgray;
-    }
-    .search-field input::placeholder{
-        color: gray;
-        padding-left: 2%;
-    }
-    .button-section button{
-        padding: 5.1%;
-        width: 100%;
-        font-size: 1rem;
-        font-weight: 500;
-        background-color: #6000F9;
-        border: none;
-        color: white;
-    }
+
+
+export const CardStyle = styled.div`
+.single-card{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 55%;
+    margin-bottom: 1%;
+    border: 1px solid #fff8f8;
+    box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a;
+    align-items: center;
+}
+.single-card .image-section{
+    width: 100%;
+    height: 250px;
+}
+.single-card .image-section img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.text-section{
+    margin-left: 3%;
+    padding: 3%;
+}
+.text-section h3{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #6000F9;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 8px;
+}
+.text-section p{
+    padding: 0;
+    margin: 0;
+    color: gray;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+.text-section h4{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2e2d2d;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 7px;
+}
+.text-section button{
+    background-color: #6000F9;
+    color: white;
+    border: none;
+    padding: 2% 5%;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+.text-section ul{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 60%;
+    padding: 3%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 7px;
+}
+.text-section ul li{
+    font-size: 0.8rem;
+    background-color: white;
+    border: 1px solid #2e2d2d26;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    padding: 5px;
+}
 `;
