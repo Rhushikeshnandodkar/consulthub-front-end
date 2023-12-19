@@ -198,16 +198,24 @@ export const CardStyle = styled.div`
     margin: 0;
     color: gray;
     font-size: 0.8rem;
-    margin-top: 3px;
+    margin-top: 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.text-section p b{
+    font-weight: 400;
+    margin-left: 5px;
 }
 .text-section h4{
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 5px;
     color: #2e2d2d;
     padding: 0;
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 7px;
+    margin-top: 2px;
+    color: gray;
 }
 .text-section button{
     background-color: #6000F9;
@@ -236,5 +244,59 @@ export const CardStyle = styled.div`
     margin-bottom: 5px;
     border-radius: 2px;
     padding: 5px;
+    text-align: center;
+}
+
+.text-section p svg{
+    align-items: center;
+    margin-top: 2px;
+}
+`;
+
+export const LoaderStyle = styled.div`
+    .single-card{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 55%;
+    margin-bottom: 1%;
+    border: 1px solid #fff8f8;
+    /* box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a; */
+    align-items: center;
+    position: relative;
+    background-color: #80808021;
+    overflow: hidden;
+}
+.loader-text{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    background-color: white;
+    top: 0;
+    left: 0;
+    filter: blur(40px);
+    animation: LoaderAnimation ease infinite 1s;
+}
+@keyframes LoaderAnimation {
+    0%{
+        left: 0;
+        top: 0;
+    }
+    100%{
+        left: 80%;
+    }
+}
+.single-card .image-section{
+    width: 100%;
+    height: 250px;
+    background-color: #80808042;
+}
+.single-card .image-section img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.text-section{
+    margin-left: 3%;
+    padding: 3%;
 }
 `;

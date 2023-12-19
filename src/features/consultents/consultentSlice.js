@@ -7,6 +7,15 @@ export const searchConsultent = createAsyncThunk('searchConsultent', async(key) 
     const response = await fetch(`http://consulthub.com:8000/api/consultent/search-consultent?search=${key}`)
     return response.json()
 })
+export const filterConsultents = createAsyncThunk('fetchLanguages', async(language) =>{
+    console.log(language)
+    const response = await fetch(`http://consulthub.com:8000/api/consultent/filter-consultents?language=${language}`)
+    return response.json()
+})
+export const fetchSingleConsultent = createAsyncThunk('fetchsingleconsultent', async(id) =>{
+    const response = await fetch(`http://consulthub.com:8000/api/consultent/consultent-detail/${id}`)
+    return response.json()
+})
 const consultentSlice = createSlice({
     name: "consultent",
     initialState : {
@@ -36,6 +45,28 @@ const consultentSlice = createSlice({
             state.consultent_data = action.payload
         })
         builder.addCase(searchConsultent.rejected, (state, action) =>{
+            state.isLoading = false
+            state.iserror = true
+        })
+        builder.addCase(filterConsultents.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        builder.addCase(filterConsultents.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.consultent_data = action.payload
+        })
+        builder.addCase(filterConsultents.rejected, (state, action) =>{
+            state.isLoading = false
+            state.iserror = true
+        })
+        builder.addCase(fetchSingleConsultent.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        builder.addCase(fetchSingleConsultent.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.singleconsultent = action.payload
+        })
+        builder.addCase(fetchSingleConsultent.rejected, (state, action) =>{
             state.isLoading = false
             state.iserror = true
         })

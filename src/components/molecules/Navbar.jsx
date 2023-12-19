@@ -26,7 +26,7 @@ function Navbar() {
                   </ul>
                 </div>
                 <div className="button-section">
-                  <button className="btn">Login/Signup</button>
+                  <button className="btn"><Link to={'/user-login'}>Login/Signup</Link></button>
                 </div>
                 <div className={`burger ${isMenuOpen ? 'remove' : ''}`}>
                   <button onClick={toggleMenu}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h18M3 12h18M3 7h18"/></svg></button>
@@ -49,7 +49,7 @@ function Navbar() {
                     <li>Connect Us</li>
                     <li>Resources</li>
                   <div className="button-section">
-                  <button className="btn">Login/Signup</button>
+                  <button className="btn"><Link to={'/user-login'}>Login/Signup</Link></button>
                 </div>
                     </ul>
                   </div>

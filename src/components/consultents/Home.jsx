@@ -1,29 +1,46 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchConsultents, searchConsultent } from '../../features/consultents/consultentSlice'
+import { fetchConsultents, filterConsultents, searchConsultent } from '../../features/consultents/consultentSlice'
 import { ConsultentListStyle } from './consultents.style'
 import Navbar from '../molecules/Navbar'
 import Cards from '../molecules/Cards'
 import { SearchStyle } from './consultents.style'
 import { useState } from 'react'
+import Loader from '../molecules/Loader'
+import { fetchCategories, fetchLanguages } from '../../features/consultents/fetchselect'
 function Home() {
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedLanguage, setSelectedLanguage] = useState('');
+    const [selectedSkill, setSelectedSkill] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
     const [skillInput, setSkillInput] = useState('')
     const dispatch = useDispatch()
     const {consultent_data, isLoading, iserror} = useSelector((state) =>({
       ...state.consultent
     }))
-    console.log(consultent_data)
+    const {languages, loading, category} = useSelector((state) =>({
+      ...state.selects
+    }))
     useEffect(() =>{
         dispatch(fetchConsultents())
+        dispatch(fetchLanguages())
+        dispatch(fetchCategories())
+
     } ,[dispatch])
 
     const handleChangeSkill = (event) =>{
+      setSelectedLanguage("")
       setSkillInput(event.target.value)
       dispatch(searchConsultent(event.target.value))
     }
     const handleChangeLanguage = (event) =>{
-      dispatch(searchConsultent(event.target.value))
+      console.log(event.target.value)
+      setSkillInput("")
+      dispatch(filterConsultents(event.target.value))
+      setSelectedLanguage(event.target.value)
+    }
+    console.log("check box is" , isChecked)
+    const handleCheckBoxChange = () =>{
+      setIsChecked(!isChecked)
     }
   return (
     <div>
@@ -34,10 +51,16 @@ function Home() {
       <div className="search-bar">
         <div className="search-field">
            <div className="input-language">
-           <select value={setSelectedOption} onChange={handleChangeLanguage} id="myDropdown">
-                <option value="option1">English</option>
-                <option value="option2">50 + consultations</option>
+           <select value={selectedLanguage} onChange={handleChangeLanguage} id="myDropdown">
+           {loading ?  <h4>loading</h4>: (languages && languages.map((data) =>(
+                  <>
+                   <option value="" selected disabled hidden>Choose Language</option>
+               <option value={`${data.language_field}`}>{data.language_field}</option>
+               
+                  </>
+                )))}
               </select>
+              
            </div>
             <div className="input-skill">
             <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='Search Skill'/>
@@ -56,18 +79,17 @@ function Home() {
                 <input type="text" placeholder='Enter Category'/>
               </div>
               <div className="booleans">
-              <div class="checkbox-container">
-              <input type="checkbox" id="myCheckbox" class="checkbox-input"/>
-              <label for="myCheckbox">Enginnering</label>
+
+              {loading ?  <h4>loading</h4>: (category && category.map((data) =>(
+                  <>
+               <div class="checkbox-container">
+               <label for="myCheckbox" key={data.cateogry_field}>
+              <input type="checkbox" value={isChecked} onChange={handleCheckBoxChange} id="myCheckbox" class="checkbox-input"/>
+              {data.cateogry_field}</label>
               </div>
-              <div class="checkbox-container">
-              <input type="checkbox" id="myCheckbox" class="checkbox-input"/>
-              <label for="myCheckbox">Business</label>
-              </div>
-              <div class="checkbox-container">
-              <input type="checkbox" id="myCheckbox" class="checkbox-input"/>
-              <label for="myCheckbox">Music</label>
-                </div>
+                  </>
+                )))}
+
               <div className="dropdowns">
               <div className="dropdown-container">
               <label for="myDropdown">Sort By :</label> <br />
@@ -93,7 +115,7 @@ function Home() {
           <div className="cards-section">
             <div className="all-cards">
               <div className="cards-list">
-                {isLoading ? <h3>Loading</h3> : (consultent_data && consultent_data.map((data) =>(
+                {isLoading ? <Loader/> : (consultent_data && consultent_data.map((data) =>(
                   <>
                 <Cards data={data}/>
                   </>
