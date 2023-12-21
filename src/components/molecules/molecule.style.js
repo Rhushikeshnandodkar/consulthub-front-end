@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavbarStyle = styled.div`
    .navbar-section{
     box-shadow: 0 2px 4px rgba(33, 51, 67, 0.048);
-    
+    font-family: 'Poppins', sans-serif;
    }
    .navbar{
     display: grid;
@@ -56,7 +56,12 @@ export const NavbarStyle = styled.div`
     border: none;
     border-radius: 2px;
     font-weight: 500;
-    font-family:  'Raleway', sans-serif;
+   }
+   .button-section button a{
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
    }
    .burger{
     display: none;
@@ -171,6 +176,7 @@ export const CardStyle = styled.div`
     border: 1px solid #fff8f8;
     box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 .single-card .image-section{
     width: 100%;
@@ -199,7 +205,6 @@ export const CardStyle = styled.div`
     color: gray;
     font-size: 0.8rem;
     margin-top: 2px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 .text-section p b{
@@ -213,9 +218,8 @@ export const CardStyle = styled.div`
     color: #2e2d2d;
     padding: 0;
     margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 2px;
-    color: gray;
+    color: black;
 }
 .text-section button{
     background-color: #6000F9;
@@ -224,7 +228,12 @@ export const CardStyle = styled.div`
     padding: 2% 5%;
     border-radius: 2px;
     font-size: 0.9rem;
-    margin-top: 5px;
+    margin-top: 10px;
+
+}
+.text-section button a{
+    color: white;
+    text-decoration: none;
 }
 .text-section ul{
     display: grid;

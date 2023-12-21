@@ -1,5 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
+export const userSignup = createAsyncThunk("user/singup", async(data, thunAPI) =>{
+    console.log(data)
+    const config = {
+        method : 'post',
+        url : "http://consulthub.com:8000/api/auth/register-user",
+        headers : {
+            'Authorization': '',
+            'Content-Type': 'application/json'
+        },
+        data
+    }
+    const response = await axios(config)
+    localStorage.setItem("userToken", response.data.access)
+    console.log(response.data)
+    return response.data
+})
 export const userLogin = createAsyncThunk("user/login", async(data, thunkAPI) =>{
     console.log(data)
     const config = {
@@ -13,8 +30,31 @@ export const userLogin = createAsyncThunk("user/login", async(data, thunkAPI) =>
     }
     const response = await axios(config);
     localStorage.setItem("userToken", response.data.access)
-    console.log(response.data)
+    const {dispatch} = thunkAPI
+    dispatch(getUserInfo())
     return response.data
+})
+export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) =>{
+    try{
+        const res = await fetch("http://consulthub.com:8000/api/auth/user-info", {
+            method: "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            }  
+        })
+        const data = await res.json()
+        localStorage.setItem('user', JSON.stringify({...data}))
+        console.log("getUser", data)
+        if(res.status==200){
+            return {...data}
+        }else{
+            return thunkAPI.rejectWithValue(data)
+        }
+    }catch(err){
+        return thunkAPI.rejectWithValue(err.response.data)
+    }
 })
 export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token) =>{
     console.log(token)
@@ -26,7 +66,7 @@ export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token)
 })
 const initialState = {
     isLoading : true,
-    user : null,
+    user : JSON.parse(localStorage.getItem("user")),
     userToken : localStorage.getItem("userToken"),
     isAuthenticated : false,
     success: false,
@@ -42,6 +82,7 @@ const userSlice = createSlice({
         .addCase(userLogin.fulfilled, (state, {payload}) => {
             state.isLoading = false
             state.userToken = localStorage.getItem("userToken")
+            state.user = localStorage.getItem("user")
             state.isAuthenticated = true;
         })
         .addCase(userLogin.rejected, (state, {payload}) => {
@@ -49,6 +90,32 @@ const userSlice = createSlice({
             state.error = payload
             state.isAuthenticated = false;
             state.userToken = null;
+        })
+        builder.addCase(userSignup.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        .addCase(userSignup.fulfilled, (state, {payload}) => {
+            state.isLoading = false
+            state.userToken = localStorage.getItem("userToken")
+            state.isAuthenticated = true;
+        })
+        .addCase(userSignup.rejected, (state, {payload}) => {
+            state.isLoading = false
+            state.error = payload
+            state.isAuthenticated = false;
+            state.userToken = null;
+        })
+        .addCase(getUserInfo.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        .addCase(getUserInfo.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.user = action.payload
+            state.isAuthenticated = true;
+        })
+        .addCase(getUserInfo.rejected, (state, {payload}) => {
+            state.isLoading = false
+            state.error = payload
         })
     }
 })

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { userLogin } from '../../features/userAuth/userSlice'
+import { userLogin, userSignup } from '../../features/userAuth/userSlice'
 import imageUrl from "../../images/login.png"
 import googleLogo from "../../images/google-logo.png"
-import { Link } from 'react-router-dom'
 import { LoginPageStyle } from './consultents.style'
-function UserLogin() {
+import { Link } from 'react-router-dom'
+function UserSignup() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {user, userToken} = useSelector((state) => ({
@@ -14,7 +14,9 @@ function UserLogin() {
   }))
   const[formData, setFormData] = useState({
     username : "",
-    password : ""
+    email : "",
+    password : "",
+    password_again : ""
   })
   const onChange = (e) =>{
     const {name, value} = e.target 
@@ -24,14 +26,13 @@ function UserLogin() {
     e.preventDefault();
     // dispatch(formData)
     console.log("submitted")
-    const {username, password} = formData
-    dispatch(userLogin({username, password}))
+    const {username,email, password, password_again} = formData
+    dispatch(userSignup({username, email, password, password_again}))
   }
 
-  if(user&& userToken){
-    return navigate('/')
+  if(user && userToken){
+    return navigate("/")
   }
-
   return (
     <div>
       <LoginPageStyle>
@@ -43,8 +44,10 @@ function UserLogin() {
         <h3><b>Best of Luck</b></h3>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" id='username' placeholder='Enter Your Username' name='username' value={formData.username} onChange={onChange}/>
+        <input type="email" id='email' name="email" placeholder='Enter Your Email' value={formData.email} onChange={onChange}/>
         <input type="password" id='password' name="password" placeholder='Enter Your Password' value={formData.password} onChange={onChange}/>
-        <button type='submit'>Login Now</button>
+        <input type="password" id='password_again' name="password_again" placeholder='Enter Your Password Again' value={formData.password_again} onChange={onChange}/>
+        <button type='submit'>Signup Now</button>
       </form>
       <p>other login options</p>
       <div className="google-login">
@@ -57,7 +60,7 @@ function UserLogin() {
         </div>
         </div>
       </div>
-      <p>don't have account <b><Link to={'/user-signup'}>Signup</Link></b></p>
+      <p>don't have account <b><Link to={'/user-login'}>Login</Link></b> </p>
       </div>
       <div className="image-section">
         <div className="image-part">
@@ -70,4 +73,4 @@ function UserLogin() {
   )
 }
 
-export default UserLogin
+export default UserSignup

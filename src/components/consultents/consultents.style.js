@@ -6,6 +6,7 @@ export const ConsultentListStyle = styled.div`
     grid-template-columns: 30% 70%;
     width: 75%;
     margin: auto;
+    font-family: 'Poppins', sans-serif;
 }
 .filters-section{
     border: 1px solid #fff8f8;
@@ -62,7 +63,6 @@ export const ConsultentListStyle = styled.div`
     padding: 2% 5%;
     width: 90%;
     background-color: white;
-    font-family:  'Raleway', sans-serif;
     background: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
@@ -80,7 +80,7 @@ export const ConsultentListStyle = styled.div`
 
 export const SearchStyle = styled.div`
     .search-bar{
-
+        font-family: 'Poppins', sans-serif;
         width: 60%;
         margin: 2% auto;
         align-items: center;
@@ -96,20 +96,18 @@ export const SearchStyle = styled.div`
         padding: 15px;
         font-size: 1.1rem;
         border: 1px solid #f1e9e9;
-        font-family:  'Raleway', sans-serif;
     }
     .search-field select{
+        font-family: 'Poppins', sans-serif;
         width: 100%;
-        padding: 15px;
+        padding: 13.5px;
         font-size: 1.1rem;
         border: 1px solid #f1e9e9;
-        font-family:  'Raleway', sans-serif;
         background-color: white;
     border: 1px solid #f9f0f0;
     -webkit-appearance: none;
   -moz-appearance: none;
     background-color: white;
-    font-family:  'Raleway', sans-serif;
     background: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
@@ -141,7 +139,6 @@ export const SearchStyle = styled.div`
         background-color: #6000F9;
         border: none;
         color: white;
-        font-family:  'Raleway', sans-serif;
     }
     @media screen and (max-width:1000px){
     .search-bar{
@@ -154,4 +151,118 @@ export const SearchStyle = styled.div`
     }
 
 }
+`;
+
+export const LoginPageStyle = styled.div`
+    .logo-section{
+        margin: 1% auto;
+        width: 85%;
+        padding: 1%;
+        font-family: 'Poppins', sans-serif;
+    }
+    .logo-section h3{
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 700;
+   }
+   .logo-section h3 b{
+    color: #6000F9;
+    font-weight: 700;
+    margin: 1px;
+    border-radius: 2px;
+   }
+   .form-section{
+    margin: 2% auto;
+   }
+   .login-page{
+    display: grid;
+    grid-template-columns:  auto 50%;
+    gap: 2%;
+    width: 80%;
+    margin: auto;
+    /* position: absolute; */
+    align-items: center;
+    padding: 0;
+    
+   }
+   .image-section{
+    width: 100%;
+   }
+   .image-section .image-part img{
+    width: 95%;
+    float: right;
+   }
+
+   .google-login img{
+    width: 15%;
+    margin-right: 1.2%;
+    object-fit: cover;
+   }
+   .form-section h2{
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+   }
+   .form-section h4{
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 500;
+    margin-top: 7px;
+    padding: 0;
+    margin-bottom: 5px;
+   }
+   .form-section h3{
+    margin: 3px;
+   }
+   .form-section form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+   }
+   .form-section form input{
+    background-color: white;
+    border: none;
+    padding: 3%;
+    font-size: 1.2rem;
+    margin: 1.2% 0;
+    border: 1px solid #80808057;
+   }
+   .form-section h3 b{
+    color: #6000F9;
+   }
+   .form-section form button{
+    background-color: #6000F9;
+    padding: 3%;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 2%;
+   }
+   .form-section p{
+    font-size: 1rem;
+    margin: 5%;
+    color: gray;
+    text-align: center;
+   }
+   .google-login-button{
+    display: grid;
+    grid-template-columns: 40% 40%;
+    margin: auto;
+    width: 100%;
+    padding: 2% 0;
+    align-items: center;
+    border: 1px solid #80808057;
+   }
+   .google-login .google-login-text p{
+    font-size: 1.1rem;
+    color: black;
+    margin: 0;
+    float: left; 
+   }
+   .google-login-button .google-login-image img{
+    float: right;
+   }
+   .login-page p b{
+    color: #6000F9;
+   }
 `;
