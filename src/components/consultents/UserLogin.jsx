@@ -22,8 +22,6 @@ function UserLogin() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(formData)
-    console.log("submitted")
     const {username, password} = formData
     dispatch(userLogin({username, password}))
   }

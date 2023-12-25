@@ -8,6 +8,7 @@ import UserSignup from './components/consultents/UserSignup';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkAuth } from './features/userAuth/userSlice';
+import Thanks from './components/molecules/Thanks';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -19,6 +20,7 @@ function App() {
       <Route path='product-detail/:id' element={<ConsultentDetail/>}/>
       <Route path='user-login' element={<UserLogin/>}/>
       <Route path='user-signup' element={<UserSignup/>}/>
+      <Route path='thank-you' element={<Thanks/>}/>
     </Routes>
   );
 }

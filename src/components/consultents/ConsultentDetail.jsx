@@ -5,13 +5,19 @@ import { fetchSingleConsultent } from '../../features/consultents/consultentSlic
 import Navbar from '../molecules/Navbar'
 import { ConsutltentDetails } from './consultents.style'
 import { useNavigate } from 'react-router-dom'
+import { fetchConsultentCalender } from '../../features/consultents/consultentSlice'
+import { bookMeeting } from '../../features/bookings/bookingSlice'
 function ConsultentDetail() {
   const navigate = useNavigate()
   const {id} = useParams()
-  const {singleconsultent, isLoading} = useSelector((state) =>({
+  const {singleconsultent,slots, isLoading} = useSelector((state) =>({
     ...state.consultent
   }))
-  const {userToken, isAuthenticated} = useSelector((state) =>({
+  const[formData, setFormData] = useState((state) =>({
+    loggedUser: null,
+    loggedConsultent : null
+  }))
+  const {userToken,user, isAuthenticated} = useSelector((state) =>({
     ...state.user
   }))
   const [fees, setFees] = useState(null)
@@ -35,12 +41,14 @@ function ConsultentDetail() {
       setClicked(true)
     }
   }
-  const bookMeeting = () =>{
+  const bookMeetingbutton = () =>{
     if(!userToken || !isAuthenticated){
       return navigate("/user-login")
     }else{
-      console.log("booked")
-      dispatch(bookMeeting())
+      console.log(user.id)
+      setFormData()
+      dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
+      return navigate("/thank-you")
     }
   }
   return (
@@ -90,13 +98,14 @@ function ConsultentDetail() {
                 <b>Fees</b>
                 Rs. {!clicked ? <>{singleconsultent.rate}</> : <>{fees}</>}/-
               </div>
-              <button onClick={bookMeeting} className="btn">See Schedule</button>
+              <button onClick={bookMeetingbutton} className="btn">Book Meeting </button>
               </div>
              </div>
           </div>
-          <div className="second-section">
+          {/* <div className="second-section">
             <div className="calender-section">
               <div className="select-days">
+              
                 <div className="day active">
                   <h3>Today</h3>
                   <p>5 Slots Available</p>
@@ -113,38 +122,38 @@ function ConsultentDetail() {
                 <h3 className='head'>Morning</h3>
               <div className="blocks-section">
                 <div className="blocks active">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 PM</h3></div>
                 </div>
               </div>
 
               <h3 className='head'>Morning</h3>
               <div className="blocks-section">
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 AM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 AM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 AM</h3></div>
                 </div>
                 <div className="blocks">
-                  <div className="single-block"><h3>10:30</h3></div>
+                  <div className="single-block"><h3>10:30 AM</h3></div>
                 </div>
               </div>
 
@@ -152,7 +161,7 @@ function ConsultentDetail() {
             <div className="description-section">
 
             </div>
-          </div>
+          </div> */}
         </ConsutltentDetails>
         </>
       )

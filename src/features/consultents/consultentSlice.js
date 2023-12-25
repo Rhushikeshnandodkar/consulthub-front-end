@@ -16,6 +16,10 @@ export const fetchSingleConsultent = createAsyncThunk('fetchsingleconsultent', a
     const response = await fetch(`http://consulthub.com:8000/api/consultent/consultent-detail/${id}`)
     return response.json()
 })
+export const fetchConsultentCalender = createAsyncThunk('fetchcalender', async(id) =>{
+    const response = await fetch(`http://consulthub.com:8000/api/booking/time-slots/${id}`)
+    return response.json()
+})
 const consultentSlice = createSlice({
     name: "consultent",
     initialState : {
@@ -23,7 +27,8 @@ const consultentSlice = createSlice({
         consultent_data : null,
         singleconsultent : null,
         searchResults : null,
-        iserror : false
+        iserror : false,
+        slots: null
     },
     extraReducers : (builder) =>{
         builder.addCase(fetchConsultents.pending, (state, action) =>{
@@ -67,6 +72,17 @@ const consultentSlice = createSlice({
             state.singleconsultent = action.payload
         })
         builder.addCase(fetchSingleConsultent.rejected, (state, action) =>{
+            state.isLoading = false
+            state.iserror = true
+        })
+        builder.addCase(fetchConsultentCalender.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        builder.addCase(fetchConsultentCalender.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.slots = action.payload
+        })
+        builder.addCase(fetchConsultentCalender.rejected, (state, action) =>{
             state.isLoading = false
             state.iserror = true
         })

@@ -1,21 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createReducer } from "@reduxjs/toolkit";
 import userSlice from "../userAuth/userSlice";
+import axios from "axios";
 
-const bookMeeting = createAsyncThunk("booking/bookMeet", async(data, thunkAPI) =>{
+export const bookMeeting = createAsyncThunk("booking/bookMeet", async(data, thunkAPI) =>{
+    console.log(data)
     try{
-        const res = await fetch("http://consulthub.com:8000/api/booking/book-meet", {
-            method : "POST",
-            headers: {
-                "Content-Type" : "application/json",
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-                Accept: "application/json",
+        const config = {
+            method : 'post',
+            url : "http://consulthub.com:8000/api/booking/book-meet",
+            headers : {
+                'Authorization': `Bearer ${localStorage.getItem("userToken")}`,
+                'Content-Type': 'application/json'
             },
             data
-        })
-        console.log(data, res)
-        return res.data
-
+        }
+        const response = await axios(config)
+        return response.data
     }catch(err){
         return thunkAPI.rejectWithValue(err)
     }
