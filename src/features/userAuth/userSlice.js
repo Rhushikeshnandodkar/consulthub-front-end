@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const userSignup = createAsyncThunk("user/singup", async(data, thunAPI) =>{
+export const userSignup = createAsyncThunk("user/singup", async(data, thunkAPI) =>{
     console.log(data)
     const config = {
         method : 'post',
@@ -14,6 +14,9 @@ export const userSignup = createAsyncThunk("user/singup", async(data, thunAPI) =
     }
     const response = await axios(config)
     localStorage.setItem("userToken", response.data.access)
+    localStorage.setItem("refreshToken", response.data.refresh)
+    const {dispatch} = thunkAPI
+    dispatch(getUserInfo())
     console.log(response.data)
     return response.data
 })
@@ -30,6 +33,7 @@ export const userLogin = createAsyncThunk("user/login", async(data, thunkAPI) =>
     }
     const response = await axios(config);
     localStorage.setItem("userToken", response.data.access)
+    localStorage.setItem("refreshToken", response.data.refresh)
     const {dispatch} = thunkAPI
     dispatch(getUserInfo())
     return response.data
@@ -55,6 +59,43 @@ export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) 
     }catch(err){
         return thunkAPI.rejectWithValue(err.response.data)
     }
+})
+export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI) =>{
+    const access = localStorage.getItem("userToken")
+    if(!access) return thunkAPI.rejectWithValue("No Token")
+    var myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+        token: access,
+    })
+    var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+      };
+    try {
+        const res = await fetch(
+        "http://consulthub.com:8000/api/auth/token/verify/",
+          requestOptions
+        );
+        const data = await res.json();
+        console.log("checkauth", data);
+  
+        if (res.status === 200) {
+          const { dispatch } = thunkAPI;
+  
+          dispatch(getUserInfo());
+          // localStorage.getItem("userToken", access);
+          return data;
+        } else {
+          localStorage.removeItem("userToken");
+          localStorage.removeItem("user")
+          localStorage.removeItem("refreshToken");
+          return thunkAPI.rejectWithValue(data);
+        }
+      } catch (err) {
+        return thunkAPI.rejectWithValue(err.response.data);
+      }
 })
 export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token) =>{
     console.log(token)
@@ -117,6 +158,18 @@ const userSlice = createSlice({
             state.isLoading = false
             state.error = payload
         })
+        .addCase(checkAuth.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(checkAuth.fulfilled, (state) => {
+            state.isLoading = false;
+            state.isAuthenticated = true;
+        })
+        .addCase(checkAuth.rejected, (state, action) => {
+            state.isLoading = false;
+            // state.loading = false;
+            state = action.payload;
+        });
     }
 })
 

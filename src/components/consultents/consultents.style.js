@@ -75,7 +75,15 @@ export const ConsultentListStyle = styled.div`
     grid-template-columns: auto;
     gap: 20px;
 }
-
+@media screen and (max-width:1000px){
+    .filters-section{
+        display: none;
+    }
+    .main-section{
+        width: 90%;
+        grid-template-columns: auto;
+    }
+}
 `;
 
 export const SearchStyle = styled.div`
@@ -100,7 +108,7 @@ export const SearchStyle = styled.div`
     .search-field select{
         font-family: 'Poppins', sans-serif;
         width: 100%;
-        padding: 13.5px;
+        padding: 12.2px;
         font-size: 1.1rem;
         border: 1px solid #f1e9e9;
         background-color: white;
@@ -142,14 +150,21 @@ export const SearchStyle = styled.div`
     }
     @media screen and (max-width:1000px){
     .search-bar{
-        width: 80%;
+        width: 90%;
         margin: 6% auto;
     }
     .search-field{
         margin: auto;
         width: 100%;
     }
-
+    .search-field input{
+        padding: 15px 5px;
+        font-size: 0.8rem;
+    }
+    .search-field select{
+        padding: 12.5px 5px;
+        font-size: 0.8rem;
+    }
 }
 `;
 
@@ -266,3 +281,184 @@ export const LoginPageStyle = styled.div`
     color: #6000F9;
    }
 `;
+
+export const ConsutltentDetails = styled.div`
+    .consultent-details{
+        width: 75%;
+        margin: 2% auto;
+    }
+    .first-box{
+        display: grid;
+        grid-template-columns: 25% 70%;
+        gap: 3%;
+        border: 1px solid #80808057;
+        align-items: center;
+    }
+    .first-box{
+        padding: 0%;
+    }
+    .first-box .image-section img{
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+    .first-box .text-section h3{
+        font-size: 1.5rem;   
+        font-weight: 400;
+        margin: 1% 0;
+        padding: 0;
+    }    
+    .text-section p{
+        margin: 5px 0;
+        font-size: 1.1rem;
+        color: gray;
+    }
+    .constultations{
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+    }
+    .constultations .consultation-completed{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .constultations .consultation-completed b{
+        margin: 0 20px;
+        color: #6000F9;
+    }
+    .rating{
+        display: flex;
+        width : 20%;
+        margin: 1% 0;
+        justify-content: space-between;
+    }
+    .minute-sections{
+        margin: 1% 0;
+        width: 40%;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        gap: 2%;
+    }
+    .minute-sections .btn.active{
+        background-color: #6000F9;
+        border: none;
+        margin-right: 1% ;
+        padding: 1.1% 2.5%;
+        color: white;
+        font-size: 1.1rem;
+    }
+    .minute-sections .btn{
+        background-color: #80808057;
+        border: none;
+        margin-right: 1% ;
+        padding: 10% 2.5%;
+        color: black;
+        border-radius: 3px;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    .fees{
+        font-size: 1.4rem;
+        padding: 1% 0;
+
+    }
+    .fees b{
+        color: #6000F9;
+        margin-right: 2%;
+    }
+    .btn{
+        background-color: #6000F9;
+        padding: 1.4% 3%;
+        margin: 1% 0;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .description ul{
+        display: flex;
+        /* justify-content: space-around; */
+        list-style: none;
+        margin: 2% 0;
+        width: 50%;
+        text-align: center;
+        padding: 0;
+    }
+    .description ul li{
+        float: left;
+        padding: 3px 10px;
+        font-size: 1rem;
+        margin-right: 10px;
+        border: 1px solid #80808057;
+    }
+    .second-section{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 4%;
+        width: 75%;
+        margin: auto;
+    }
+    .calender-section{
+        border: 1px solid #80808057;
+        padding: 2%;
+    }
+    .calender-section .select-days{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        text-align: center;        
+    }
+    .calender-section .select-days {
+        border-bottom: 2px solid #80808057;
+    }
+    .calender-section .select-days .day.active{
+        border-bottom: 4px solid #6000F9;
+        margin-bottom: -2px;
+    }
+             
+    .calender-section .day h3{
+        margin: 4px 0;
+        font-size: 1.3rem;
+        color: black;
+        font-weight: 500;
+    }
+    .calender-section .day p{
+        margin: 10px 0;
+        font-size: 0.9rem;
+        color: gray;
+        padding-bottom: 8px;
+    }
+    .calender-section h3{
+        padding: 0;
+        margin: 0;
+    }
+    .calender-section .head{
+        font-size: 1.4rem;
+        margin: 3%;
+        font-weight: 400;
+        padding: 0;
+    }
+    .blocks-section{
+        padding: 2%;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        gap: 0%;
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .blocks .single-block{
+        margin: 4%;
+    }
+    .blocks .single-block h3{
+        padding: 8%;
+        font-size: 1.4rem;
+        font-weight: 200;
+        color: #6000F9;
+        border: 1px solid #6000F9;
+        border-radius: 3px;
+
+    }
+    @media screen and (max-width:1000px){
+
+    }
+`;
+

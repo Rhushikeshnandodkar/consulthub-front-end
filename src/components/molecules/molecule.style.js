@@ -7,7 +7,7 @@ export const NavbarStyle = styled.div`
    }
    .navbar{
     display: grid;
-    grid-template-columns: 8% 78% 15%;
+    grid-template-columns: 8% 78% 14%;
     width: 75%;
     margin: auto;
     padding: 0% 0;
@@ -20,6 +20,20 @@ export const NavbarStyle = styled.div`
    .logo-section svg{
     width: 50px;
     aspect-ratio: 1/1;
+   }
+   .button-section p{
+    display: flex;
+    align-items: center;
+    float: right;
+   }
+   .button-section p h6{
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+   }
+   .button-section p svg{
+    width: 40px;
    }
    .logo-section h3{
     font-size: 1.7rem;
@@ -212,13 +226,13 @@ export const CardStyle = styled.div`
     margin-left: 5px;
 }
 .text-section h4{
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
     color: #2e2d2d;
     padding: 0;
     margin: 0;
-    margin-top: 2px;
+    margin-top: 7px;
     color: black;
 }
 .text-section button{
@@ -259,6 +273,39 @@ export const CardStyle = styled.div`
 .text-section p svg{
     align-items: center;
     margin-top: 2px;
+}
+@media screen and (max-width:1000px){
+    .filters-section{
+        display: none;
+    }
+    .text-section h3{
+        font-size: 1rem;
+        margin-bottom: 0px;
+    }
+    .single-card{
+        grid-template-columns: 30% 65%;
+    }
+    .single-card .image-section{
+        height: 100%;
+    }
+    .text-section ul{
+        /* font-size: 0.7rem; */
+        display: none;
+    }
+    .text-section p{
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .text-section h4{
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    .text-section button{
+        margin-top: 6px;
+    }
+    .text-section button a{
+        font-size: 0.8rem;
+    }
 }
 `;
 

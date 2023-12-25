@@ -20,11 +20,11 @@ function Home() {
     const {languages, loading, category} = useSelector((state) =>({
       ...state.selects
     }))
+    // const {}
     useEffect(() =>{
         dispatch(fetchConsultents())
         dispatch(fetchLanguages())
         dispatch(fetchCategories())
-
     } ,[dispatch])
 
     const handleChangeSkill = (event) =>{
@@ -54,9 +54,8 @@ function Home() {
            <select value={selectedLanguage} onChange={handleChangeLanguage} id="myDropdown">
            {loading ?  <h4>loading</h4>: (languages && languages.map((data) =>(
                   <>
-                   <option value="" selected disabled hidden>Choose Language</option>
+                   <option value="" selected disabled hidden>Language</option>
                <option value={`${data.language_field}`}>{data.language_field}</option>
-               
                   </>
                 )))}
               </select>
