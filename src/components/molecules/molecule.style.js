@@ -7,10 +7,10 @@ export const NavbarStyle = styled.div`
    }
    .navbar{
     display: grid;
-    grid-template-columns: 8% 78% 14%;
+    grid-template-columns: 15% 70% 14%;
     width: 75%;
     margin: auto;
-    padding: 0% 0;
+    padding: 1% 0;
     align-items: center;
    } 
    .logo-section{
@@ -20,6 +20,10 @@ export const NavbarStyle = styled.div`
    .logo-section svg{
     width: 50px;
     aspect-ratio: 1/1;
+   }
+
+   .navbar .logo-section img{
+    width: 240px;
    }
    .button-section p{
     display: flex;
@@ -185,16 +189,16 @@ export const CardStyle = styled.div`
 .single-card{
     width: 100%;
     display: grid;
-    grid-template-columns: 25% 55%;
-    margin-bottom: 1%;
-    border: 1px solid #fff8f8;
-    box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a;
+    grid-template-columns: 30% 60%;
+    margin-bottom: 0.3%;
+    border: 1px solid #eae6e6;
+    /* box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a; */
     align-items: center;
     font-family: 'Poppins', sans-serif;
 }
 .single-card .image-section{
     width: 100%;
-    height: 250px;
+    height: 290px;
 }
 .single-card .image-section img{
     width: 100%;
@@ -206,7 +210,7 @@ export const CardStyle = styled.div`
     padding: 3%;
 }
 .text-section h3{
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #6000F9;
     padding: 0;
@@ -217,8 +221,8 @@ export const CardStyle = styled.div`
     padding: 0;
     margin: 0;
     color: gray;
-    font-size: 0.8rem;
-    margin-top: 2px;
+    font-size: 1rem;
+    margin-top: 0px;
 
 }
 .text-section p b{
@@ -226,7 +230,7 @@ export const CardStyle = styled.div`
     margin-left: 5px;
 }
 .text-section h4{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 8px;
     color: #2e2d2d;
@@ -241,7 +245,7 @@ export const CardStyle = styled.div`
     border: none;
     padding: 2% 5%;
     border-radius: 2px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 10px;
 
 }
@@ -250,8 +254,8 @@ export const CardStyle = styled.div`
     text-decoration: none;
 }
 .text-section ul{
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    /* grid-template-columns: auto auto auto; */
     width: 60%;
     padding: 3%;
     list-style: none;
@@ -260,7 +264,7 @@ export const CardStyle = styled.div`
     margin-top: 7px;
 }
 .text-section ul li{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     background-color: white;
     border: 1px solid #2e2d2d26;
     margin-right: 5px;
@@ -279,8 +283,9 @@ export const CardStyle = styled.div`
         display: none;
     }
     .text-section h3{
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin-bottom: 0px;
+        margin-bottom: 5px;
     }
     .single-card{
         grid-template-columns: 30% 65%;
@@ -293,66 +298,114 @@ export const CardStyle = styled.div`
         display: none;
     }
     .text-section p{
-        font-size: 0.7rem;
-        margin: 0;
+        font-size: 0.8rem;
+        /* margin: 3px 0; */
+        padding: 0;
     }
     .text-section h4{
-        font-size: 0.8rem;
-        margin: 0;
+        font-size: 0.9rem;
     }
     .text-section button{
         margin-top: 6px;
     }
     .text-section button a{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
+    .single-card .image-section img{
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
 }
 `;
 
 export const LoaderStyle = styled.div`
-    .single-card{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 25% 55%;
-    margin-bottom: 1%;
-    border: 1px solid #fff8f8;
-    /* box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a; */
-    align-items: center;
-    position: relative;
-    background-color: #80808021;
-    overflow: hidden;
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #6000F9; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  left: 45%;
+  top: 40%;
 }
-.loader-text{
-    position: absolute;
-    width: 200px;
-    height: 250px;
-    background-color: white;
-    top: 0;
-    left: 0;
-    filter: blur(40px);
-    animation: LoaderAnimation ease infinite 1s;
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
-@keyframes LoaderAnimation {
-    0%{
-        left: 0;
-        top: 0;
-    }
-    100%{
-        left: 80%;
+@media screen and (max-width:1000px){
+    .loader{
+        width: 50px;
+        height: 50px;
     }
 }
-.single-card .image-section{
-    width: 100%;
-    height: 250px;
-    background-color: #80808042;
-}
-.single-card .image-section img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.text-section{
-    margin-left: 3%;
-    padding: 3%;
-}
+`;
+
+export const ReviewCardStyle = styled.div`
+    .card-section{
+        border: 1px solid #80808057;
+        padding: 2%;
+        margin: 2% 0;
+    }
+    .rating{
+        display: flex;
+        width : 13%;
+        margin: 1% 0;
+        justify-content: space-between;
+    }
+    .card-section h4{
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    .card-section h5{
+        font-size: 1.2rem;
+        margin: 6px 0;
+        font-weight: 600;
+    }
+    .date p{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: gray;
+        font-size: 0.9rem;
+        margin: 7px 0;
+    }
+`;
+
+export const ThanksStyle = styled.div`
+    .thanks-section{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        text-align: center;
+    }
+    .thanks-icon svg{
+        width: 140px;
+        height: 140px;
+    }
+    .thanks-text h1{
+        font-size: 2.2rem;
+        margin: 10px;
+    }
+    .thanks-text p{
+        font-size: 1.4rem;
+        margin: 0;
+    }
+    .thanks-text button{
+        margin-top: 3%;
+        background-color: #6000F9;
+        border: none;
+        color: white;
+        padding: 2% 4%;
+    }
+    .thanks-text button a{
+        color: white;
+        font-size: 1.2rem;
+        text-align: center;
+        text-decoration: none;
+    }
 `;

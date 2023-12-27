@@ -9,7 +9,7 @@ export const searchConsultent = createAsyncThunk('searchConsultent', async(key) 
 })
 export const filterConsultents = createAsyncThunk('fetchLanguages', async(language) =>{
     console.log(language)
-    const response = await fetch(`http://consulthub.com:8000/api/consultent/filter-consultents?language=${language}`)
+    const response = await fetch(`http://consulthub.com:8000/api/consultent/filter-consultents?category=${language}`)
     return response.json()
 })
 export const fetchSingleConsultent = createAsyncThunk('fetchsingleconsultent', async(id) =>{
@@ -20,6 +20,10 @@ export const fetchConsultentCalender = createAsyncThunk('fetchcalender', async(i
     const response = await fetch(`http://consulthub.com:8000/api/booking/time-slots/${id}`)
     return response.json()
 })
+export const fetchConsultentReviews = createAsyncThunk('reviews', async(id, thunkAPI) =>{
+    const response = await fetch(`http://consulthub.com:8000/api/consultent/fetch-reviews/${id}`)
+    return response.json()
+})
 const consultentSlice = createSlice({
     name: "consultent",
     initialState : {
@@ -27,6 +31,8 @@ const consultentSlice = createSlice({
         consultent_data : null,
         singleconsultent : null,
         searchResults : null,
+        reviews: null,
+        isReview : false,
         iserror : false,
         slots: null
     },
@@ -84,6 +90,17 @@ const consultentSlice = createSlice({
         })
         builder.addCase(fetchConsultentCalender.rejected, (state, action) =>{
             state.isLoading = false
+            state.iserror = true
+        })
+        builder.addCase(fetchConsultentReviews.pending, (state, action) =>{
+            state.isReview = false;
+        })
+        builder.addCase(fetchConsultentReviews.fulfilled, (state, action) =>{
+            state.isReview = true;
+            state.reviews = action.payload
+        })
+        builder.addCase(fetchConsultentReviews.rejected, (state, action) =>{
+            state.isReview = false
             state.iserror = true
         })
     }

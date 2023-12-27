@@ -16,7 +16,8 @@ function UserSignup() {
     username : "",
     email : "",
     password : "",
-    password_again : ""
+    password_again : "",
+    phone_number : ""
   })
   const onChange = (e) =>{
     const {name, value} = e.target 
@@ -26,8 +27,8 @@ function UserSignup() {
     e.preventDefault();
     // dispatch(formData)
     console.log("submitted")
-    const {username,email, password, password_again} = formData
-    dispatch(userSignup({username, email, password, password_again}))
+    const {username, phone_number, email, password, password_again} = formData
+    dispatch(userSignup({username,phone_number, email, password, password_again}))
   }
 
   if(user && userToken){
@@ -44,6 +45,7 @@ function UserSignup() {
         <h3><b>Best of Luck</b></h3>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" id='username' placeholder='Enter Your Username' name='username' value={formData.username} onChange={onChange}/>
+        <input type="text" id='phone_number' placeholder='Enter Your Phone Number' name='phone_number' value={formData.phone_number} onChange={onChange}/>
         <input type="email" id='email' name="email" placeholder='Enter Your Email' value={formData.email} onChange={onChange}/>
         <input type="password" id='password' name="password" placeholder='Enter Your Password' value={formData.password} onChange={onChange}/>
         <input type="password" id='password_again' name="password_again" placeholder='Enter Your Password Again' value={formData.password_again} onChange={onChange}/>

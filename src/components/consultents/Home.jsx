@@ -52,17 +52,17 @@ function Home() {
         <div className="search-field">
            <div className="input-language">
            <select value={selectedLanguage} onChange={handleChangeLanguage} id="myDropdown">
-           {loading ?  <h4>loading</h4>: (languages && languages.map((data) =>(
+           {loading ?  <h4>loading</h4>: (category && category.map((data) =>(
                   <>
-                   <option value="" selected disabled hidden>Language</option>
-               <option value={`${data.language_field}`}>{data.language_field}</option>
+                   <option value="" selected disabled hidden>Category</option>
+               <option value={`${data.cateogry_field}`}>{data.cateogry_field}</option>
                   </>
                 )))}
               </select>
               
            </div>
             <div className="input-skill">
-            <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='Search Skill'/>
+            <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='  Search Ttitle'/>
             </div>
         </div>
         {/* <div className="button-section"><button className='btn'>Search</button></div> */}
@@ -70,47 +70,6 @@ function Home() {
     </div>
     </SearchStyle>
         <div className="main-section">
-          <div className="filters-section">
-            <div className="filter-box">
-              <h3>Filters</h3>
-              <div className="category-input">
-                <label htmlFor="">Search By Category</label> <br />
-                <input type="text" placeholder='Enter Category'/>
-              </div>
-              <div className="booleans">
-
-              {loading ?  <h4>loading</h4>: (category && category.map((data) =>(
-                  <>
-               <div class="checkbox-container">
-               <label for="myCheckbox" key={data.cateogry_field}>
-              <input type="checkbox" value={isChecked} onChange={handleCheckBoxChange} id="myCheckbox" class="checkbox-input"/>
-              {data.cateogry_field}</label>
-              </div>
-                  </>
-                )))}
-
-              <div className="dropdowns">
-              <div className="dropdown-container">
-              <label for="myDropdown">Sort By :</label> <br />
-              <select id="myDropdown">
-                <option value="option1">Reviews</option>
-                <option value="option2">Rating</option>
-                <option value="option3">Pricing</option>
-                <option value="option3">Consultations</option>
-
-              </select>
-              </div>
-              <div className="dropdown-container">
-              <label for="myDropdown">No. of consultations:</label> <br />
-              <select id="myDropdown">
-                <option value="option1">25 + consultations</option>
-                <option value="option2">50 + consultations</option>
-              </select>
-              </div>
-              </div>
-              </div>
-            </div>
-          </div>
           <div className="cards-section">
             <div className="all-cards">
               <div className="cards-list">

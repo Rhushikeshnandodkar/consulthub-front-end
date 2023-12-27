@@ -3,6 +3,7 @@ import { NavbarStyle } from './molecule.style'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import consultlogo from '../../images/logo.png'
 function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -18,7 +19,7 @@ function Navbar() {
         <div className="navbar-section">
             <div className="navbar">
                 <div className="logo-section">
-                <h3>Consult<b>Hub</b></h3>
+                <img src={consultlogo} alt="" />
                 </div>
                 <div className="menu-section">
                   <ul>

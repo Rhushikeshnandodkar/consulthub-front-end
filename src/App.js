@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkAuth } from './features/userAuth/userSlice';
 import Thanks from './components/molecules/Thanks';
+import BookingThanks from './components/molecules/BookingThanks';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -20,7 +21,7 @@ function App() {
       <Route path='product-detail/:id' element={<ConsultentDetail/>}/>
       <Route path='user-login' element={<UserLogin/>}/>
       <Route path='user-signup' element={<UserSignup/>}/>
-      <Route path='thank-you' element={<Thanks/>}/>
+      <Route path='thank-you' element={<BookingThanks/>}/>
     </Routes>
   );
 }

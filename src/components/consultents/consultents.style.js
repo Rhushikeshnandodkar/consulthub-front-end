@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const ConsultentListStyle = styled.div`
 .main-section{
-    display: grid;
-    grid-template-columns: 30% 70%;
     width: 75%;
     margin: auto;
     font-family: 'Poppins', sans-serif;
@@ -13,6 +11,7 @@ export const ConsultentListStyle = styled.div`
     box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a;
     padding: 5% 0% 15% 2%; 
     width: 90%;
+    display: none;
 }
 .filter-box{
     margin-left: 4%;
@@ -72,7 +71,7 @@ export const ConsultentListStyle = styled.div`
 }
 .cards-list{
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 50% 50%;
     gap: 20px;
 }
 @media screen and (max-width:1000px){
@@ -83,6 +82,11 @@ export const ConsultentListStyle = styled.div`
         width: 90%;
         grid-template-columns: auto;
     }
+    .cards-list{
+    display: grid;
+    grid-template-columns: 100%;
+    /* gap: 20px; */
+}
 }
 `;
 
@@ -158,11 +162,11 @@ export const SearchStyle = styled.div`
         width: 100%;
     }
     .search-field input{
-        padding: 15px 5px;
+        padding: 12px 0px;
         font-size: 0.8rem;
     }
     .search-field select{
-        padding: 12.5px 5px;
+        padding: 9.5px 5px;
         font-size: 0.8rem;
     }
 }
@@ -361,6 +365,7 @@ export const ConsutltentDetails = styled.div`
     .fees{
         font-size: 1.4rem;
         padding: 1% 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     }
     .fees b{
@@ -457,8 +462,115 @@ export const ConsutltentDetails = styled.div`
         border-radius: 3px;
 
     }
-    @media screen and (max-width:1000px){
+    .user-description{
+        width: 71%;
+        margin: auto;
+        border: 1px solid #80808057;
+        padding: 2%;
+    }
+    .user-description h3{
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 500;
+    }
+    .user-description p{
+        font-size: 1.1rem;
+        color: #312f2f;
+    }
+    .user-description h4{
+        margin: 1% 0;
+        font-size: 1.3rem;
+        color: #312f2f;
+        padding: 0;
+    }
+    .user-description ul{
+        list-style: none;
+        padding: 0;
+    }
+    .user-description ul li{
+        font-size: 1.2rem;
+        margin: 3px 0;
+        color: #312f2f;
+    }
+    .heading{
+        color: #312f2f;
+        font-weight: 300;
+        font-size: 1.4rem;
+    }
+    .heading h2{
+        font-weight: 400;
+    }
+    .review-section{
+        width: 75%;
+        margin: 4% auto;
+    }
 
+    @media screen and (max-width:1000px){
+        .consultent-details{
+            width: 90%;
+            margin-top: 5%;
+        }
+        .first-box{
+            grid-template-columns: 100%;
+            gap: 0;
+        }
+        .text-section{
+            padding: 3%;
+            padding-bottom: 6%;
+        }
+        .first-box .image-section img{
+            height: 300px;
+        }
+        .first-box .text-section h3{
+            font-size: 1.3rem;
+            margin: 1% 0 ;
+        }
+        .text-section p{
+            font-size: 1rem;
+        }
+        .constultations{
+            flex-direction: column;
+            width: 90%;
+        }
+        .consultation-completed{
+            margin-top: 1%;
+        }
+        .rating{
+            width: 50%;
+            margin: 4% 0;
+        }
+        .description ul{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            flex-direction: column;
+            text-align: center;
+            width: 50%;
+        }
+        .description ul li{
+            margin-top: 5px;
+
+        }
+        .minute-sections{
+            width: 80%;
+            margin: 5% 0;
+        }
+        .fees{
+            font-size: 1.2rem;
+            margin-bottom: 2%;
+        }
+        .btn{
+            margin: 1% 0;
+        }
+        .user-description{
+            width: 86%;
+        }
+        .review-section{
+            width: 90%;
+        }
+        .user-description p{
+            font-size: 1rem;
+        }
     }
 `;
+
 
