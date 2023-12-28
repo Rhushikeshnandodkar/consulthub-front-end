@@ -50,8 +50,14 @@ function ConsultentDetail() {
     }else{
       console.log(user.id)
       setFormData()
-      dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
-      return navigate("/thank-you")
+      if (!clicked){
+        alert("please select time slot")
+      }
+      else{
+        dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
+        return navigate("/thank-you")
+
+      }
     }
   }
   return (
@@ -99,7 +105,7 @@ function ConsultentDetail() {
               </div>
               <div className="fees">
                 <b>Fees</b>
-                Rs. {!clicked ? <>{singleconsultent.rate}</> : <>{fees}</>}/-
+                Rs. {!clicked ? <>Select Time</> : <>{fees}</>}/-
               </div>
               <button onClick={bookMeetingbutton} className="btn">Book Meeting </button>
               </div>

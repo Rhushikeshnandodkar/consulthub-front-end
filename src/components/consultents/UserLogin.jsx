@@ -6,6 +6,7 @@ import imageUrl from "../../images/login.png"
 import googleLogo from "../../images/google-logo.png"
 import { Link } from 'react-router-dom'
 import { LoginPageStyle } from './consultents.style'
+import Navbar from '../molecules/Navbar'
 function UserLogin() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -32,8 +33,8 @@ function UserLogin() {
 
   return (
     <div>
+  <Navbar/>
       <LoginPageStyle>
-      <div className="logo-section"> <h3>Consult<b>Hub</b></h3></div>
       <div className="login-page">
       <div className="form-section">
         <h2>Login To Connect</h2>
@@ -45,15 +46,15 @@ function UserLogin() {
         <button type='submit'>Login Now</button>
       </form>
       <p>other login options</p>
+      <div className="google">
       <div className="google-login">
-        <div className="google-login-button">
-        <div className="google-login-image">
-        <img src={googleLogo} alt="" />
+        <div className="google-image">
+          <img src={googleLogo} alt="" />
         </div>
-        <div className="google-login-text">
-          <p>Continue with google</p>
+        <div className="google-text">
+          <p>Login With Google</p>
         </div>
-        </div>
+      </div>
       </div>
       <p>don't have account <b><Link to={'/user-signup'}>Signup</Link></b></p>
       </div>

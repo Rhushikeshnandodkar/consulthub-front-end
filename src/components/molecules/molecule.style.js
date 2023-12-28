@@ -87,6 +87,7 @@ export const NavbarStyle = styled.div`
    .response-bar{
     /* display: none; */
     position: fixed;
+    z-index: 10;
     
    }
    .burger-cut{
@@ -101,6 +102,10 @@ export const NavbarStyle = styled.div`
         margin: 0;
         padding: 0;
     }
+    .navbar .logo-section img{
+    width:180px;
+    padding: 10% 0;
+   }
     .response-bar ul li{
         list-style: none;
         margin-left: -6%;

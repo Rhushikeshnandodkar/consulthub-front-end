@@ -174,7 +174,7 @@ export const SearchStyle = styled.div`
 
 export const LoginPageStyle = styled.div`
     .logo-section{
-        margin: 1% auto;
+        margin: 8% auto;
         width: 85%;
         padding: 1%;
         font-family: 'Poppins', sans-serif;
@@ -197,8 +197,8 @@ export const LoginPageStyle = styled.div`
     display: grid;
     grid-template-columns:  auto 50%;
     gap: 2%;
-    width: 80%;
-    margin: auto;
+    width: 75%;
+    margin: 4% auto;
     /* position: absolute; */
     align-items: center;
     padding: 0;
@@ -283,6 +283,64 @@ export const LoginPageStyle = styled.div`
    }
    .login-page p b{
     color: #6000F9;
+   }
+   .google{
+    border: 1px solid #80808057;
+   }
+   .google-login{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20% 75%;
+    width: 40%;
+    padding: 1%;
+    margin: auto;
+    justify-content: space-evenly;
+   }
+   .google-text p{
+    margin: 0;
+    padding: 0;
+   }
+   .google-image img{
+    width: 100%;
+   }
+   @media screen and (max-width:1000px){
+    .login-page{
+        grid-template-columns: auto;
+        width: 80%;
+        margin: 20% auto;
+        z-index: 9;
+        border: 1px solid #80808057;
+        padding: 4%;
+    }
+    .form-section h2{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    .form-section h3 {
+        text-align: center;
+        font-size: 1rem;
+        margin: 4px;
+    }
+    .form-section h4{
+        text-align: center;
+        font-size: 0.9rem;
+    };
+    .form-section form input{
+        font-size: 0.9rem;
+    }
+    .form-section form button{
+        font-size: 1rem;
+    }
+    .form-section p{
+        font-size: 0.8rem;
+    }
+    .image-section{
+        display: none;
+    }
+    .google-login{
+        width: 50%;
+        padding: 0.5%;
+    }
    }
 `;
 

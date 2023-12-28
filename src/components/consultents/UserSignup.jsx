@@ -6,6 +6,7 @@ import imageUrl from "../../images/login.png"
 import googleLogo from "../../images/google-logo.png"
 import { LoginPageStyle } from './consultents.style'
 import { Link } from 'react-router-dom'
+import Navbar from '../molecules/Navbar'
 function UserSignup() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -36,12 +37,12 @@ function UserSignup() {
   }
   return (
     <div>
+      <Navbar/>
       <LoginPageStyle>
-      <div className="logo-section"> <h3>Consult<b>Hub</b></h3></div>
       <div className="login-page">
       <div className="form-section">
-        <h2>Login To Connect</h2>
-        <h4>Login here to connect our best consultents</h4>
+        <h2>Signup To Connect</h2>
+        <h4>Signup here to connect our best consultents</h4>
         <h3><b>Best of Luck</b></h3>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" id='username' placeholder='Enter Your Username' name='username' value={formData.username} onChange={onChange}/>
@@ -52,15 +53,15 @@ function UserSignup() {
         <button type='submit'>Signup Now</button>
       </form>
       <p>other login options</p>
+      <div className="google">
       <div className="google-login">
-        <div className="google-login-button">
-        <div className="google-login-image">
-        <img src={googleLogo} alt="" />
+        <div className="google-image">
+          <img src={googleLogo} alt="" />
         </div>
-        <div className="google-login-text">
-          <p>Continue with google</p>
+        <div className="google-text">
+          <p>Login With Google</p>
         </div>
-        </div>
+      </div>
       </div>
       <p>don't have account <b><Link to={'/user-login'}>Login</Link></b> </p>
       </div>
