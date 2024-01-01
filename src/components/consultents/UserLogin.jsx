@@ -7,12 +7,22 @@ import googleLogo from "../../images/google-logo.png"
 import { Link } from 'react-router-dom'
 import { LoginPageStyle } from './consultents.style'
 import Navbar from '../molecules/Navbar'
+import { useGoogleLogin } from '@react-oauth/google'
+import { googleUserLogin } from '../../features/userAuth/userSlice'
 function UserLogin() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {user, userToken, status} = useSelector((state) => ({
     ...state.user
   }))
+  const googleLogin = useGoogleLogin({
+    onSuccess : (codeResponse) => SendToken(codeResponse),
+    onError : (error) => console.log(error)
+  })
+  const SendToken = async (tokenInfo) => {
+    console.log(tokenInfo.access_token)
+    dispatch(googleUserLogin(tokenInfo.access_token))
+  }
   const [isactive, setIsactive] = useState(false)
   const[formData, setFormData] = useState({
     username : "",
@@ -49,7 +59,7 @@ function UserLogin() {
         <button type='submit'>Login Now</button>
       </form>
       <p>other login options</p>
-      <div className="google">
+      <div className="google" onClick={() => googleLogin()}>
       <div className="google-login">
         <div className="google-image">
           <img src={googleLogo} alt="" />

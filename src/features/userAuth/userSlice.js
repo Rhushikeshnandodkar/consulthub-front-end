@@ -42,6 +42,38 @@ export const userLogin = createAsyncThunk("user/login", async(data, thunkAPI) =>
         return thunkAPI.rejectWithValue(err.response.status)
     }
 })
+export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token, thunkAPI) =>{
+    console.log(token)
+    try{
+        const res = await axios.post(`${url}/api/auth/google-login`, {
+            access_token : token
+        })
+        localStorage.setItem("userToken", res.data.access)
+        localStorage.setItem("refreshToken", res.data.refresh)
+        const {dispatch} = thunkAPI
+        dispatch(getUserInfo())
+        return res.data
+    }catch(err){
+        console.log(err)
+        return thunkAPI.rejectWithValue(err.response.status)
+    }
+})
+export const googleUserSignup = createAsyncThunk("user/googleSignup", async(token, thunkAPI) =>{
+    console.log(token)
+    try{
+        const res = await axios.post(`${url}/api/auth/google-signup`, {
+            access_token : token
+        })
+        localStorage.setItem("userToken", res.data.access)
+        localStorage.setItem("refreshToken", res.data.refresh)
+        const {dispatch} = thunkAPI
+        dispatch(getUserInfo())
+        return res.data
+    }catch(err){
+        console.log(err)
+        return thunkAPI.rejectWithValue(err.response.status)
+    }
+})
 export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) =>{
     try{
         const res = await fetch(`${url}/api/auth/user-info`, {
@@ -61,7 +93,7 @@ export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) 
             return thunkAPI.rejectWithValue(data)
         }
     }catch(err){
-        return thunkAPI.rejectWithValue(err.response.data)
+        return thunkAPI.rejectWithValue(err.response.status)
     }
 })
 export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI) =>{
@@ -101,14 +133,7 @@ export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI)
         return thunkAPI.rejectWithValue(err.response.data);
       }
 })
-export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token) =>{
-    console.log(token)
-    const res = await axios.post(`${url}/api/auth/generate-token`, {
-        id_token : token
-    })
-    console.log(res)
-    return res
-})
+
 const initialState = {
     isLoading : true,
     user : JSON.parse(localStorage.getItem("user")),
@@ -133,6 +158,40 @@ const userSlice = createSlice({
             state.isAuthenticated = true;
         })
         .addCase(userLogin.rejected, (state, {payload}) => {
+            state.isLoading = false
+            // state.error = payload
+            state.status = payload
+            state.isAuthenticated = false;
+            state.userToken = null;
+        })
+        builder.addCase(googleUserLogin.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        .addCase(googleUserLogin.fulfilled, (state, {payload}) => {
+            state.isLoading = false
+            state.userToken = localStorage.getItem("userToken")
+            state.user = localStorage.getItem("user")
+            state.status = 200
+            state.isAuthenticated = true;
+        })
+        .addCase(googleUserLogin.rejected, (state, {payload}) => {
+            state.isLoading = false
+            // state.error = payload
+            state.status = payload
+            state.isAuthenticated = false;
+            state.userToken = null;
+        })
+        builder.addCase(googleUserSignup.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        .addCase(googleUserSignup.fulfilled, (state, {payload}) => {
+            state.isLoading = false
+            state.userToken = localStorage.getItem("userToken")
+            state.user = localStorage.getItem("user")
+            state.status = 200
+            state.isAuthenticated = true;
+        })
+        .addCase(googleUserSignup.rejected, (state, {payload}) => {
             state.isLoading = false
             // state.error = payload
             state.status = payload
@@ -164,6 +223,8 @@ const userSlice = createSlice({
         .addCase(getUserInfo.rejected, (state, {payload}) => {
             state.isLoading = false
             state.error = payload
+            localStorage.removeItem("userToken")
+            localStorage.removeItem("refreshToken")
         })
         .addCase(checkAuth.pending, (state) => {
             state.isLoading = true;

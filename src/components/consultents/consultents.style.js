@@ -279,6 +279,7 @@ export const LoginPageStyle = styled.div`
     width: 100%;
     padding: 2% 0;
     align-items: center;
+    cursor: pointer;
     border: 1px solid #80808057;
    }
    .google-login .google-login-text p{
@@ -295,6 +296,7 @@ export const LoginPageStyle = styled.div`
    }
    .google{
     border: 1px solid #80808057;
+    cursor: pointer;
    }
    .google-login{
     display: grid;
