@@ -173,6 +173,15 @@ export const SearchStyle = styled.div`
 `;
 
 export const LoginPageStyle = styled.div`
+.alert h6{
+    font-size: 0.9rem;
+    margin: 5px 0;
+    border: 2px solid #db12125c;
+    background-color: #ff00002e;
+    padding: 3px;
+    font-weight: 400;
+    color: #ff0000a8;
+}
     .logo-section{
         margin: 8% auto;
         width: 85%;

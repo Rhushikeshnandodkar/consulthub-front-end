@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { userLogin } from '../../features/userAuth/userSlice'
@@ -10,9 +10,10 @@ import Navbar from '../molecules/Navbar'
 function UserLogin() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const {user, userToken} = useSelector((state) => ({
+  const {user, userToken, status} = useSelector((state) => ({
     ...state.user
   }))
+  const [isactive, setIsactive] = useState(false)
   const[formData, setFormData] = useState({
     username : "",
     password : ""
@@ -25,6 +26,7 @@ function UserLogin() {
     e.preventDefault();
     const {username, password} = formData
     dispatch(userLogin({username, password}))
+
   }
 
   if(user&& userToken){
@@ -37,6 +39,7 @@ function UserLogin() {
       <LoginPageStyle>
       <div className="login-page">
       <div className="form-section">
+        {status==401 ? <><div className="alert"><h6>Please Enter Valid Details</h6></div></> : <></>}
         <h2>Login To Connect</h2>
         <h4>Login here to connect our best consultents</h4>
         <h3><b>Best of Luck</b></h3>

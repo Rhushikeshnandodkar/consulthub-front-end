@@ -1,27 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { url } from "../../components/common/api";
 export const fetchConsultents = createAsyncThunk('fetchConsultents', async() =>{
-    const response = await fetch("http://consulthub.com:8000/api/consultent/consultent-list")
+    const response = await fetch(`${url}/api/consultent/consultent-list`)
     return response.json()
 })
 export const searchConsultent = createAsyncThunk('searchConsultent', async(key) =>{
-    const response = await fetch(`http://consulthub.com:8000/api/consultent/search-consultent?search=${key}`)
+    const response = await fetch(`${url}/api/consultent/search-consultent?search=${key}`)
     return response.json()
 })
 export const filterConsultents = createAsyncThunk('fetchLanguages', async(language) =>{
     console.log(language)
-    const response = await fetch(`http://consulthub.com:8000/api/consultent/filter-consultents?category=${language}`)
+    const response = await fetch(`${url}/api/consultent/filter-consultents?category=${language}`)
     return response.json()
 })
 export const fetchSingleConsultent = createAsyncThunk('fetchsingleconsultent', async(id) =>{
-    const response = await fetch(`http://consulthub.com:8000/api/consultent/consultent-detail/${id}`)
+    const response = await fetch(`${url}/api/consultent/consultent-detail/${id}`)
     return response.json()
 })
 export const fetchConsultentCalender = createAsyncThunk('fetchcalender', async(id) =>{
-    const response = await fetch(`http://consulthub.com:8000/api/booking/time-slots/${id}`)
+    const response = await fetch(`${url}/api/booking/time-slots/${id}`)
     return response.json()
 })
 export const fetchConsultentReviews = createAsyncThunk('reviews', async(id, thunkAPI) =>{
-    const response = await fetch(`http://consulthub.com:8000/api/consultent/fetch-reviews/${id}`)
+    const response = await fetch(`${url}/api/consultent/fetch-reviews/${id}`)
     return response.json()
 })
 const consultentSlice = createSlice({

@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { url } from "../../components/common/api";
 export const fetchLanguages = createAsyncThunk('fetchlanguages', async() =>{
-    const response = await fetch("http://consulthub.com:8000/api/consultent/languages-list")
+    const response = await fetch(`${url}/api/consultent/languages-list`)
     return response.json()
 })
 export const fetchCategories = createAsyncThunk('fetchcategories', async() =>{
-    const response = await fetch("http://consulthub.com:8000/api/consultent/categories-list")
+    const response = await fetch(`${url}/api/consultent/categories-list`)
     return response.json()
 })
 const fetchSelectSlice = createSlice({

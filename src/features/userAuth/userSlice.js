@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { url } from "../../components/common/api";
 export const userSignup = createAsyncThunk("user/singup", async(data, thunkAPI) =>{
     console.log(data)
     const config = {
         method : 'post',
-        url : "http://consulthub.com:8000/api/auth/register-user",
+        url : `${url}/api/auth/register-user`,
         headers : {
             'Authorization': '',
             'Content-Type': 'application/json'
@@ -21,26 +21,30 @@ export const userSignup = createAsyncThunk("user/singup", async(data, thunkAPI) 
     return response.data
 })
 export const userLogin = createAsyncThunk("user/login", async(data, thunkAPI) =>{
-    console.log(data)
-    const config = {
-        method : 'post',
-        url: "http://consulthub.com:8000/api/auth/token/",
-        headers : {
-            'Authorization': '',
-            'Content-Type': 'application/json'
-        },
-        data
+    try{
+        const config = {
+            method : 'post',
+            url: `${url}/api/auth/token/`,
+            headers : {
+                'Authorization': '',
+                'Content-Type': 'application/json'
+            },
+            data
+        }
+        const response = await axios(config);
+        console.log(response)
+        localStorage.setItem("userToken", response.data.access)
+        localStorage.setItem("refreshToken", response.data.refresh)
+        const {dispatch} = thunkAPI
+        dispatch(getUserInfo())
+        return response.data
+    }catch(err){
+        return thunkAPI.rejectWithValue(err.response.status)
     }
-    const response = await axios(config);
-    localStorage.setItem("userToken", response.data.access)
-    localStorage.setItem("refreshToken", response.data.refresh)
-    const {dispatch} = thunkAPI
-    dispatch(getUserInfo())
-    return response.data
 })
 export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) =>{
     try{
-        const res = await fetch("http://consulthub.com:8000/api/auth/user-info", {
+        const res = await fetch(`${url}/api/auth/user-info`, {
             method: "GET",
             headers : {
                 "Content-Type" : "application/json",
@@ -75,7 +79,7 @@ export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI)
       };
     try {
         const res = await fetch(
-        "http://consulthub.com:8000/api/auth/token/verify/",
+        `${url}/api/auth/token/verify/`,
           requestOptions
         );
         const data = await res.json();
@@ -99,7 +103,7 @@ export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI)
 })
 export const googleUserLogin = createAsyncThunk("user/googleLogin", async(token) =>{
     console.log(token)
-    const res = await axios.post("http://consulthub.com:8000/api/auth/generate-token", {
+    const res = await axios.post(`${url}/api/auth/generate-token`, {
         id_token : token
     })
     console.log(res)
@@ -111,7 +115,8 @@ const initialState = {
     userToken : localStorage.getItem("userToken"),
     isAuthenticated : false,
     success: false,
-    error : false
+    error : false,
+    status : null
 }
 const userSlice = createSlice({
     name : "user",
@@ -124,11 +129,13 @@ const userSlice = createSlice({
             state.isLoading = false
             state.userToken = localStorage.getItem("userToken")
             state.user = localStorage.getItem("user")
+            state.status = 200
             state.isAuthenticated = true;
         })
         .addCase(userLogin.rejected, (state, {payload}) => {
             state.isLoading = false
-            state.error = payload
+            // state.error = payload
+            state.status = payload
             state.isAuthenticated = false;
             state.userToken = null;
         })
