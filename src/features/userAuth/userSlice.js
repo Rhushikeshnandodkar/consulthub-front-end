@@ -82,11 +82,10 @@ export const getUserInfo = createAsyncThunk("user/userinfo", async(_, thunkAPI) 
                 "Content-Type" : "application/json",
                 Authorization: `Bearer ${localStorage.getItem("userToken")}`,
                 Accept: "application/json",
-            }  
+            }
         })
         const data = await res.json()
         localStorage.setItem('user', JSON.stringify({...data}))
-        console.log("getUser", data)
         if(res.status==200){
             return {...data}
         }else{
@@ -115,7 +114,6 @@ export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI)
           requestOptions
         );
         const data = await res.json();
-        console.log("checkauth", data);
   
         if (res.status === 200) {
           const { dispatch } = thunkAPI;
@@ -133,7 +131,28 @@ export const checkAuth = createAsyncThunk("user/verifyToken", async(_, thunkAPI)
         return thunkAPI.rejectWithValue(err.response.data);
       }
 })
-
+export const getInterests = createAsyncThunk("user/getinterests", async(key) => {
+    const response = await fetch(`${url}/api/auth/get-interests?search=${key}`)
+    return response.json()
+})
+export const createProfile = createAsyncThunk('user/createprofile', async(data, thunkAPI) =>{
+    console.log(data, "dsata")
+    try{
+        const res = fetch(`${url}/api/auth/user-info`, {
+            method: "PATCH",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            }  ,
+            body: JSON.stringify(data)
+        })
+        console.log(res)
+        return res.data
+    }catch(err){
+        return thunkAPI.rejectWithValue(err)
+    }
+})
 const initialState = {
     isLoading : true,
     user : JSON.parse(localStorage.getItem("user")),
@@ -141,7 +160,8 @@ const initialState = {
     isAuthenticated : false,
     success: false,
     error : false,
-    status : null
+    status : null,
+    interests : null
 }
 const userSlice = createSlice({
     name : "user",
@@ -234,6 +254,18 @@ const userSlice = createSlice({
             state.isAuthenticated = true;
         })
         .addCase(checkAuth.rejected, (state, action) => {
+            state.isLoading = false;
+            // state.loading = false;
+            state = action.payload;
+        })
+        .addCase(getInterests.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(getInterests.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.interests = action.payload
+        })
+        .addCase(getInterests.rejected, (state, action) => {
             state.isLoading = false;
             // state.loading = false;
             state = action.payload;

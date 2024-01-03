@@ -25,7 +25,7 @@ function UserLogin() {
   }
   const [isactive, setIsactive] = useState(false)
   const[formData, setFormData] = useState({
-    username : "",
+    email : "",
     password : ""
   })
   const onChange = (e) =>{
@@ -34,9 +34,8 @@ function UserLogin() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {username, password} = formData
-    dispatch(userLogin({username, password}))
-
+    const {email, password} = formData
+    dispatch(userLogin({email, password}))
   }
 
   if(user&& userToken){
@@ -54,7 +53,7 @@ function UserLogin() {
         <h4>Login here to connect our best consultents</h4>
         <h3><b>Best of Luck</b></h3>
       <form action="" onSubmit={handleSubmit}>
-        <input type="text" id='username' placeholder='Enter Your Username' name='username' value={formData.username} onChange={onChange}/>
+        <input type="text" id='username' placeholder='Enter Your Username' name='email' value={formData.email} onChange={onChange}/>
         <input type="password" id='password' name="password" placeholder='Enter Your Password' value={formData.password} onChange={onChange}/>
         <button type='submit'>Login Now</button>
       </form>

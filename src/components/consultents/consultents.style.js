@@ -642,4 +642,108 @@ export const ConsutltentDetails = styled.div`
     }
 `;
 
+export const CreateUserProfileStyle = styled.div`
+    .heading h1{
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-size: 2rem;
+        font-weight: 400;
+        color: gray;
+    }
+    .form-section{
+        width: 75%;
+        margin: auto;
+    }
+    .form-section form .first-line{
+        display: flex;
+        justify-content: space-evenly;
+    }
 
+    .form-section form .first-line input{
+        width: 90%;
+        padding: 1% 1%;
+        font-size: 1rem;
+        margin-right: 2%;
+    }
+    .form-text h4{
+        margin-top: 2%;
+        margin-bottom: 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    .form-text p{
+        font-size: 1rem;
+        font-weight: 300;
+        margin-top: 0.5%;
+    }
+    .form-section form input{
+        width: 96%;
+        padding: 1% 1%;
+        border: 1px solid #80808057;
+        font-size: 1rem;
+    }
+
+    .interests{
+        position: relative;
+    }
+    .interests button{
+        display: flex;
+        padding: 1% 1%;
+        align-items: center;
+        font-size: 1rem;
+        justify-content: space-between;
+        margin: 2% 0;
+        border: none;
+        font-weight: 300;
+        margin-right: 15px;
+        border: 3px;
+    }
+    .selected-options{
+        display: flex;
+    }
+    .interests button h4{
+        margin: 0%;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-right: 20px;
+    }
+    .interests button svg{
+        width: 25px;
+        height: 25px;
+        float: right;
+        /* margin-left: 1; */
+        cursor: pointer;
+    }
+    .btn{
+        margin: 1.3% 0;
+        padding: 1% 2%;
+        font-size: 1rem;
+        border: none;
+        background-color: #6000F9;
+        color: white;
+        border-radius: 3px;
+    }
+    .interests .suggetions{
+        position: absolute;
+        background-color: #f7f7f7;
+        width: 98.2%;
+        margin-top: 1px;
+        display: none;
+    }
+    .interests .suggetions.active{
+        display: block;
+    }
+    .interests .suggetions ul{
+        list-style: none;
+        margin: 0% 0;
+        border-bottom: 0.3px solid #aeabab57;
+        padding: 0% 0%;
+    }
+    .interests .suggetions ul li{
+        padding: 1% 1%;
+        border-bottom: 0.3px solid #aeabab57;
+        cursor: pointer;
+    }
+
+`;

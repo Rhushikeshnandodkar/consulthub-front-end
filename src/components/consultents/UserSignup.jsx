@@ -49,7 +49,7 @@ function UserSignup() {
   }
 
   if(user && userToken){
-    return navigate("/")
+    return navigate("/create-profile")
   }
 
   return (

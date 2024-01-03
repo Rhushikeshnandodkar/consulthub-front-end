@@ -7,8 +7,8 @@ export const NavbarStyle = styled.div`
    }
    .navbar{
     display: grid;
-    grid-template-columns: 15% 70% 14%;
-    width: 75%;
+    grid-template-columns: 15% 65% 20%;
+    width: 76%;
     margin: auto;
     padding: 1% 0;
     align-items: center;
@@ -30,14 +30,20 @@ export const NavbarStyle = styled.div`
     align-items: center;
     float: right;
    }
-   .button-section p h6{
-    font-size: 1.1rem;
-    margin: 0;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-   }
    .button-section p svg{
     width: 40px;
+    padding: 0;
+    margin: 0;
+   }
+   .button-section p h6 svg{
+    width: 15px;
+    height: 15px;
+    margin-left: -5px;
+   }
+   .button-section p h6{
+    margin: 0;
+    font-size: 1.3rem;
+    margin-left: 3%;
    }
    .logo-section h3{
     font-size: 1.7rem;
@@ -64,19 +70,31 @@ export const NavbarStyle = styled.div`
     color: black;
     text-decoration: none;
    }
+   .button-section{
+    cursor: pointer;
+   }
    .button-section button{
     float: right;
-    padding: 5%;
+    margin-left: 4%;
+    padding: 3% 8%;
     font-size: 1.1rem;
-    color: white;
-    /* border: 1px solid #6000F9; */
-    background-color: #6000F9;
-    border: none;
+    color: #6000F9;
+    border: 1px solid #6000F9;
+    background-color: white;
     border-radius: 2px;
     font-weight: 500;
+    transition: 1s ease;
+    cursor: pointer;
+   }
+   .button-section button:hover{
+    color: white;
+    background-color: #6000F9;
+   }
+   .button-section button:hover a{
+    color: white;
    }
    .button-section button a{
-    color: white;
+    color: 6000F9;
     text-decoration: none;
     font-weight: 400;
     font-family: 'Poppins', sans-serif;
