@@ -13,7 +13,7 @@ function EditUserProfile() {
   }))
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [userInfo, setUserInfo] = useState({first_name: "", last_name: "", phone_number: "", interests:[]})
+  const [userInfo, setUserInfo] = useState({first_name: user.first_name, last_name: user.last_name, phone_number: user.phone_number, interests:user.interests})
   const onChange = (e) =>{
     const {name, value} = e.target 
     setUserInfo({...userInfo, [name]: value})

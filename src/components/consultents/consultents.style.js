@@ -767,5 +767,50 @@ export const CreateUserProfileStyle = styled.div`
         border-bottom: 0.3px solid #aeabab57;
         cursor: pointer;
     }
+`;
 
+export const EditProfileStyle = styled.div`
+    .profile-info-section{
+        width: 75%;
+        margin: 2% auto;
+        border: 0.3px solid #aeabab57;
+        padding: 1%;
+        position: relative;
+    }
+    .heading{
+        text-align: center;
+        margin-top: 2%;
+    }
+    .heading h1{
+        color: #4a4949;
+    }
+    .edit-icon{
+        position: absolute;
+        top: 6%;
+        right: 2%;
+    }
+    .edit-icon svg{
+        color: gray;
+        width: 30px;
+    }
+    .profile{
+        padding: 1%;
+    }
+    .profile h2{
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: #2d2c2c;
+    }
+    .profile ul{
+        list-style: none;
+        padding: 0;
+        display: flex;
+    }
+    .profile ul li{
+        font-size: 1.3rem;
+        border-radius: 2px;
+        background-color: #aeabab57;
+        padding: 8px;
+        margin-right: 10px;
+    }
 `;

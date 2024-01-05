@@ -45,7 +45,7 @@ function Navbar() {
                  <>
                   <Link to={'/user-login'}>
                 <button className="btn" onClick={logOut}>Logout</button></Link>
-                 <Link to={'/create-profile'}>
+                 <Link to={'/your-profile'}>
                 <button className="btn">Profile</button></Link>
 
                  </>
