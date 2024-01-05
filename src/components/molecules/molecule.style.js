@@ -142,9 +142,14 @@ export const NavbarStyle = styled.div`
     .burger{
         display: block;
         transition: 1s ease;
+        position: relative;
+    }
+    .burger-icon.remove{
+        display: none;
     }
     .burger-cut{
         display: none;
+        position: relative;
     }
     .burger-cut.cuticon{
         display: block;
@@ -153,12 +158,16 @@ export const NavbarStyle = styled.div`
         display: none;
     }
     .burger svg{
-        font-size: 2rem;
         width: 30px;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
     .burger-cut svg{
-        font-size: 2rem;
         width: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
     .burger button{
         background-color: white;
@@ -217,6 +226,7 @@ export const CardStyle = styled.div`
     border: 1px solid #eae6e6;
     /* box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a; */
     align-items: center;
+    position: relative;
     font-family: 'Poppins', sans-serif;
 }
 .single-card .image-section{
@@ -272,6 +282,22 @@ export const CardStyle = styled.div`
     margin-top: 10px;
 
 }
+.social-buttons{
+    /* position: absolute; */
+    right: 3%;
+    top: 3%;
+}
+.social-buttons ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.social-buttons a svg{
+    color: #808080d6;
+    width: 30px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
 .text-section button a{
     color: white;
     text-decoration: none;
@@ -280,23 +306,27 @@ export const CardStyle = styled.div`
     display: flex;
     /* grid-template-columns: auto auto auto; */
     width: 60%;
-    padding: 3%;
+    align-items: center;
+    padding: 1%;
     list-style: none;
     margin: 0;
     padding: 0;
-    margin-top: 7px;
+    
+    margin-top: 5px;
 }
 .text-section ul li{
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
     background-color: white;
-    border: 1px solid #2e2d2d26;
     margin-right: 5px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     border-radius: 2px;
-    padding: 5px;
+    /* padding: 5px; */
     text-align: center;
 }
-
+.social-buttons ul li a{
+    margin: 0;
+    padding: 0;
+}
 .text-section p svg{
     align-items: center;
     margin-top: 2px;

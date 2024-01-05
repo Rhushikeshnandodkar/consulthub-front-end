@@ -386,6 +386,26 @@ export const ConsutltentDetails = styled.div`
         font-size: 1.1rem;
         color: gray;
     }
+    .social-buttons ul li a svg{
+        width: 30px;
+        height: 30px;
+    }
+    .social-buttons ul{
+        display: flex;
+        list-style: none;
+        width: 60%;
+        margin: 0;
+        padding: 0;
+    }
+    .social-buttons ul li{
+        padding: 5px;
+        border: 1px solid #80808057;
+        margin-right: 5px;
+        border-radius: 3px;
+    }
+    .social-buttons ul li a{
+        color: #898989;
+    }
     .constultations{
         display: flex;
         justify-content: space-between;
@@ -427,6 +447,7 @@ export const ConsutltentDetails = styled.div`
         margin-right: 1% ;
         padding: 10% 2.5%;
         color: black;
+        cursor: pointer;
         border-radius: 3px;
         font-size: 1.1rem;
         text-align: center;
@@ -448,6 +469,7 @@ export const ConsutltentDetails = styled.div`
         border: none;
         color: white;
         font-size: 1.2rem;
+        cursor: pointer;
     }
     .description ul{
         display: flex;
