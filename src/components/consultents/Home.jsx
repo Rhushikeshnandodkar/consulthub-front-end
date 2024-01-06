@@ -55,7 +55,7 @@ function Home() {
            {loading ?  <h4>loading</h4>: (category && category.map((data) =>(
                   <>
                    <option value="" selected disabled hidden>Category</option>
-               <option value={`${data.cateogry_field}`}>{data.cateogry_field}</option>
+               <option value={`${data.interest}`}>{data.interest}</option>
                   </>
                 )))}
               </select>

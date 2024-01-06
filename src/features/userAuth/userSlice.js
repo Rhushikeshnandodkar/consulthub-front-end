@@ -147,10 +147,29 @@ export const createProfile = createAsyncThunk('user/createprofile', async(data, 
             }  ,
             body: JSON.stringify(data)
         })
-        console.log(res)
         return res.data
     }catch(err){
         return thunkAPI.rejectWithValue(err)
+    }
+})
+export const getUserBookings = createAsyncThunk('user/getUserBookings', async(thunkAPI) =>{
+    try{
+        const res = await fetch(`${url}/api/booking/user-booking`, {
+            method: "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            }
+        })
+        const data = await res.json()
+        if(res.status==200){
+            return data
+        }else{
+            return thunkAPI.rejectWithValue(data)
+        }
+    }catch(err){
+        return thunkAPI.rejectWithValue(err.response.status)
     }
 })
 const initialState = {
@@ -161,7 +180,8 @@ const initialState = {
     success: false,
     error : false,
     status : null,
-    interests : null
+    interests : null,
+    bookings : null
 }
 const userSlice = createSlice({
     name : "user",
@@ -241,6 +261,20 @@ const userSlice = createSlice({
             state.isAuthenticated = true;
         })
         .addCase(getUserInfo.rejected, (state, {payload}) => {
+            state.isLoading = false
+            state.error = payload
+            localStorage.removeItem("userToken")
+            localStorage.removeItem("refreshToken")
+        })
+        .addCase(getUserBookings.pending, (state, action) =>{
+            state.isLoading = true;
+        })
+        .addCase(getUserBookings.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.bookings = action.payload
+            state.isAuthenticated = true;
+        })
+        .addCase(getUserBookings.rejected, (state, {payload}) => {
             state.isLoading = false
             state.error = payload
             localStorage.removeItem("userToken")

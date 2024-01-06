@@ -813,4 +813,33 @@ export const EditProfileStyle = styled.div`
         padding: 8px;
         margin-right: 10px;
     }
+    .booked-table{
+        width: 77.5%;
+        margin: auto;
+        /* border: 1px solid #aeabab57; */
+        padding: 1%;
+    }
+    .booked-table table{
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+    .booked-table table thead{
+        background-color: #6000F9;
+        border: 1px solid #6000F9;
+        width: 100%;
+    }
+    .booked-table table thead th{
+        margin: 0;
+        padding: 1%;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .booked-table table tbody tr {
+        border: 1px solid #aeabab57;
+    }
+    .booked-table table tbody tr td{
+        font-size: 1.1rem;
+        padding: 1%;
+    }
 `;

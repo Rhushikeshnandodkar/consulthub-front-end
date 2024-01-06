@@ -94,7 +94,7 @@ function ConsultentDetail() {
               <div className="description">
               <ul>
                     {singleconsultent.category.map((values) =>(
-                        <li key={values.id}>{values.cateogry_field}</li>
+                        <li key={values.id}>{values.interest}</li>
                     ))}
                 </ul>
               </div>
