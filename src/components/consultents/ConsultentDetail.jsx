@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { fetchConsultentReviews, fetchSingleConsultent } from '../../features/consultents/consultentSlice'
+import { fetchConsultentReviews, fetchSingleConsultent, postReview, reviewAllowance } from '../../features/consultents/consultentSlice'
 import Navbar from '../molecules/Navbar'
 import { ConsutltentDetails } from './consultents.style'
 import { useNavigate } from 'react-router-dom'
@@ -12,9 +12,30 @@ import Loader from '../molecules/Loader'
 function ConsultentDetail() {
   const navigate = useNavigate()
   const {id} = useParams()
-  const {singleconsultent,slots, isReview,reviews,  isLoading} = useSelector((state) =>({
+  const {singleconsultent,slots, reviewallowance, isReview,reviews,  isLoading} = useSelector((state) =>({
     ...state.consultent
   }))
+  const [r_rating, setRating] = useState(0);
+
+  const handleStarClick = (selectedRating) => {
+    setReviewData({...reviewData, rating : selectedRating});
+  };
+  
+  const[reviewData, setReviewData] = useState({
+    review_title : "",
+    review_text : "",
+    rating : 0
+  })
+  const onChange = (e) =>{
+    const {name, value} = e.target 
+    setReviewData({...reviewData, [name]: value})
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const {review_title, review_text, rating, user_name} = reviewData
+    dispatch(postReview({review_title, review_text, rating, user_name: user.first_name,  uId: id}))
+    return navigate('/')
+  }
   const[formData, setFormData] = useState((state) =>({
     loggedUser: null,
     loggedConsultent : null
@@ -27,6 +48,7 @@ function ConsultentDetail() {
   useEffect(() =>{
     dispatch(fetchSingleConsultent(id))
     dispatch(fetchConsultentReviews(id))
+    dispatch(reviewAllowance(id))
   }, [dispatch])
   const [clicked, setClicked] = useState(false)
   const stars = Array.from({length:5}, (_, index) =>{
@@ -190,6 +212,34 @@ function ConsultentDetail() {
           </div>
           <div className="review-section">
           <div className="heading"><h2>Reviews</h2></div>
+         {reviewallowance && reviewallowance.can_post ? <>
+          <div className="write-review">
+          <form action="" onSubmit={handleSubmit}>
+            <div className="review-input">
+            <label for="w3review">Write Review To Consultent :</label> <br />
+            <input type="text" placeholder='    Review title' name='review_title' value={reviewData.review_title} onChange={onChange}/>
+            <textarea id="w3review" placeholder="    Review" rows="4" cols="50" name='review_text' value={reviewData.review_text} onChange={onChange}>
+            </textarea> <br />
+            <div>
+      <p>Rate this:</p>
+      <div className="stars">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          style={{ cursor: 'pointer', marginRight: '5px' }}
+          onClick={() => handleStarClick(star)}
+        >
+          {star <= reviewData.rating ? <div className="bright-star"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path fill="#6000f9" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275z"/></svg></div> : <div className="star"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path fill="#cbbee0" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275z"/></svg></div>}
+        </span>
+      ))}</div>
+      {/* <p>Selected Rating: {rating}</p> */}
+    </div>
+            <button className="btn" type='Submit'>Submit Response</button>
+            </div>
+            </form>
+          </div></>: <>
+            cannot write review
+          </>}
            {isReview && reviews.map((val) =>(
             <>
             <ReviewCards data={val}/>

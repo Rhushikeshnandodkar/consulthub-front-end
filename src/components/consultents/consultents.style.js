@@ -399,7 +399,7 @@ export const ConsutltentDetails = styled.div`
     }
     .social-buttons ul li{
         padding: 5px;
-        border: 1px solid #80808057;
+        /* border: 1px solid #80808057; */
         margin-right: 5px;
         border-radius: 3px;
     }
@@ -595,7 +595,32 @@ export const ConsutltentDetails = styled.div`
         width: 75%;
         margin: 4% auto;
     }
-
+    .review-input label{
+        font-size: 1.2rem;
+        margin: 1% 0;
+    }
+    .review-input textarea{
+        margin-top: 1rem;
+        width: 100%;
+        border: 1px solid #89898957;
+        padding: 2% 0;
+        font-size: 1.1rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .btn a{
+        color: white;
+        text-decoration: none;
+    }
+    .stars{
+        display: flex;
+    }
+    .review-input input{
+        width: 100%;
+        padding: 1% 0;
+        border: 1px solid #89898957;
+        font-size: 1.1rem;
+        margin-top: 1.4%;
+    }
     @media screen and (max-width:1000px){
         .consultent-details{
             width: 90%;

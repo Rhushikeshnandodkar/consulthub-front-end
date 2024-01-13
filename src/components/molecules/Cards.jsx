@@ -22,7 +22,7 @@ function Cards(data) {
               </ul>
             </div>
                 <h4>Rs. {data.data.rate}/- per Minute</h4>
-                <button><Link to={`product-detail/${data.data.id}`}>See Profile </Link></button>
+                <button><Link to={`/product-detail/${data.data.id}`}>See Profile </Link></button>
             </div>
           
         </div>

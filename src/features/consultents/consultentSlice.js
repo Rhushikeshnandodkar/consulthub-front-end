@@ -25,6 +25,46 @@ export const fetchConsultentReviews = createAsyncThunk('reviews', async(id, thun
     const response = await fetch(`${url}/api/consultent/fetch-reviews/${id}`)
     return response.json()
 })
+export const reviewAllowance = createAsyncThunk('reviewAllow', async(id, thunkAPI) =>{
+    try{
+        const res = await fetch(`${url}/api/consultent/check-reviews?consultent=${id}`, {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            }
+        })
+        const data = await res.json()
+        if(res.status == 200){
+            return {...data}
+        }
+    }catch(err){
+        return thunkAPI.rejectWithValue(err.response)
+    }
+})
+export const postReview = createAsyncThunk('postReview', async(data, thunkAPI) =>{
+    console.log(data)
+    try{
+        const res = await fetch(`${url}/api/consultent/post-reviews?consultent=${data.uId}`, {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            },
+            body : JSON.stringify(data)
+        })
+        const resData = await res.json()
+        if(res.status == 200){
+            console.log(resData)
+            return {...data}
+        }
+    }catch(err){
+        console.log(err)
+        return thunkAPI.rejectWithValue(err.response)
+    }
+})
 const consultentSlice = createSlice({
     name: "consultent",
     initialState : {
@@ -35,7 +75,8 @@ const consultentSlice = createSlice({
         reviews: null,
         isReview : false,
         iserror : false,
-        slots: null
+        slots: null,
+        reviewallowance: null
     },
     extraReducers : (builder) =>{
         builder.addCase(fetchConsultents.pending, (state, action) =>{
@@ -103,6 +144,28 @@ const consultentSlice = createSlice({
         builder.addCase(fetchConsultentReviews.rejected, (state, action) =>{
             state.isReview = false
             state.iserror = true
+        })
+        builder.addCase(reviewAllowance.pending, (state, action) =>{
+            state.isLoading = true
+        })
+        builder.addCase(reviewAllowance.fulfilled, (state, action) =>{
+            state.reviewallowance = action.payload
+            state.isLoading = false
+        })
+        builder.addCase(reviewAllowance.rejected, (state, action) =>{
+            // state.isReview = false
+            state.iserror = true
+        })
+        builder.addCase(postReview.pending, (state, action) =>{
+            state.isLoading = true
+        })
+        builder.addCase(postReview.fulfilled, (state, action) =>{
+            state.isLoading = false
+        })
+        builder.addCase(postReview.rejected, (state, action) =>{
+            // state.isReview = false
+            state.iserror = true
+            state.isLoading = false
         })
     }
 })

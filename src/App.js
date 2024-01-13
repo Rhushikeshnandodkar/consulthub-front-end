@@ -12,6 +12,7 @@ import Thanks from './components/molecules/Thanks';
 import BookingThanks from './components/molecules/BookingThanks';
 import EditUserProfile from './components/consultents/EditUserProfile';
 import UserProfile from './components/consultents/UserProfile';
+import LandingPage from './components/common/LandingPage';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -19,7 +20,9 @@ function App() {
   }, [])
   return (
     <Routes>
-      <Route path='/' element={<Home/>}/>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/consultents' element={<Home/>}/>
+
       <Route path='product-detail/:id' element={<ConsultentDetail/>}/>
       <Route path='user-login' element={<UserLogin/>}/>
       <Route path='user-signup' element={<UserSignup/>}/>

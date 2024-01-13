@@ -33,11 +33,11 @@ function Navbar() {
                 </div>
                 <div className="menu-section">
                   <ul>
-                    <li><Link to={`/`}>Find Consultent</Link></li>
-                    <li>Become Consultent</li>
+                    <li><Link to={`/consultents`}>Find Consultent</Link></li>
+                    {/* <li>Become Consultent</li> */}
                     <li>About</li>
                     <li>Connect Us</li>
-                    <li>Resources</li>
+                    {/* <li>Resources</li> */}
                   </ul>
                 </div>
                 <div className="button-section">
@@ -70,8 +70,16 @@ function Navbar() {
                     <li>About</li>
                     <li>Connect Us</li>
                     <li>Resources</li>
-                  <div className="button-section">
-                  <button className="btn"><Link to={'/user-login'}>Login/Signup</Link></button>
+                    <div className="button-section">
+                 {user && userToken ? 
+                 <>
+                  <Link to={'/user-login'}>
+                <button className="btn" onClick={logOut}>Logout</button></Link>
+                 <Link to={'/your-profile'}>
+                <button className="btn">Profile</button></Link>
+
+                 </>
+                 :  <button className="btn"><Link to={'/user-login'}>Login/Signup</Link></button>}
                 </div>
               </ul>
                   </div>
