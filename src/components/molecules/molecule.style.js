@@ -136,6 +136,9 @@ export const NavbarStyle = styled.div`
         
         display: none;
     }
+    .navbar .logo-section a img{
+        padding: 5%;
+    }
     .logo-section h3{
         font-size: 1.4rem;
     }
@@ -190,7 +193,8 @@ export const NavbarStyle = styled.div`
         left: 0;
     }
     .response-bar .logo-section{
-        margin-left: 10%;
+        margin-left: 6%;
+        margin-bottom: 6%;
     }
     .response-bar ul li{
         margin-bottom: 10%;
@@ -199,8 +203,16 @@ export const NavbarStyle = styled.div`
         color: black;
         text-decoration: none;
     }
+    .response-bar .button-section button{
+        float: none;
+        margin-left: 0;
+        margin-bottom: 3%;
+    }
     .response-bar .button-section{
-        float: left;
+        float: none;
+        display: flex;
+        flex-direction: column;
+        margin: 2% -8%;
     }
     .response-bar .button-section button{
         background-color: #f2f2f2;
@@ -211,6 +223,10 @@ export const NavbarStyle = styled.div`
         display: flex;
         justify-content: space-between;
         width: 85%;
+    }
+    .response-bar .logo-section img{
+        width: 180px;
+        margin-top: 5%;
     }
    }
 `;
@@ -461,4 +477,89 @@ export const ThanksStyle = styled.div`
         text-align: center;
         text-decoration: none;
     }
+`;
+
+export const FooterStyle = styled.div`
+    .footer-section{
+        background-color: #f6f9fc;
+        margin-top: 1%;
+    }
+    .footer{
+        display: grid;
+        grid-template-columns: 35% 20% 20% 20%;
+        padding: 3%;
+        width: 75%;
+        margin: auto;
+    }
+    .footer .line p{
+        width: 80%;
+    }
+    .footer .line .logo-section img{
+        width: 60%;
+    }
+    .footer ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .line .social-links{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .line .social-links li svg{
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        color: #6000F9;
+        border-radius: 50%;
+        border: 1px solid #6000F9;
+        cursor: pointer;
+        transition: 1s ease;
+    }
+    .line .social-links li svg:hover{
+        background-color: #6000F9;
+        color: white;
+    }
+    .line p{
+        font-size: 1.1rem;
+    }
+    .line ul li{
+        padding: 2%  0;
+        font-size: 1.1rem;
+    }
+    @media screen and (max-width:1000px){
+    .footer{
+        grid-template-columns: auto;
+        width: 85%;
+        padding: 5%;
+    }
+    .footer-section{
+        margin-top: 4%;
+    }
+    .footer .line .logo-section img{
+        width: 65%;
+        padding: 3% 0;
+    }
+    .footer .line p{
+        margin: 1% 0;
+        width: 95%;
+    }
+    .footer ul li{
+        padding: 1% 0;
+    }
+    .footer .line h3{
+        margin-top: 4%;
+        margin-bottom: 0;
+        padding-bottom: 1%;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .line p{
+        font-size: 0.9rem;
+    }
+    .line ul li{
+        font-size: 0.9rem;
+    }
+}
 `;

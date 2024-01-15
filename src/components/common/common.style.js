@@ -79,7 +79,9 @@ export const LandingPageStyle = styled.div`
         padding-top: 8%;
     }
     .text p{
-        font-size: 1rem;
+        font-size: 0.9rem;
+        width: 95%;
+        margin: 2% auto;
     }
     .text .btn{
         display: flex;
@@ -132,7 +134,7 @@ export const LandingPageStyle = styled.div`
         margin: auto;
     }
     .heading{
-        margin: 7% auto;
+        margin-top: 11%;
     }
     .session-section{
         flex-direction: column;
@@ -142,6 +144,77 @@ export const LandingPageStyle = styled.div`
     }
 }
 
+/* guarentee section css  */
+.guarentee{
+    display: grid;
+    grid-template-columns: 53% 45%;
+    gap: 2%;
+    width: 70%;
+    margin: 5% auto;
+    align-items: center;
+}
+.guarentee .left-side{
+    width: 100%;
+}
+.guarentee .right-side video{
+    width: 100%;
+    opacity: 0.9;
+
+}
+.guarentee h3{
+    font-size: 3rem;
+    font-weight: 400;
+    color: #6000F9;
+    margin: 3% 0;
+}
+.guarentee p{
+    font-size: 1.3rem;
+    color: gray;
+    margin-bottom: 0.5%;
+}
+.guarentee p svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 2%;
+}
+.guarentee p b{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.left-side button a{
+    font-size: 1.3rem;
+    margin-top: 3px;
+}
+.left-side .btn{
+    margin-top: 6%;
+}
+.left-side .btn a{
+    font-size: 1.3rem;
+    margin: 2% 0;
+}
+@media (max-width:1000px) {
+    .guarentee{
+        grid-template-columns: 100%;
+        width: 80%;
+        margin-top: 7%;
+    }
+    .guarentee h3{
+        font-size: 1.4rem;
+    }
+    .guarentee p{
+        font-size: 1.1rem;
+        margin-bottom: 1%;
+    }
+    .guarentee p svg{
+        width: 17px;
+        height: 17px;
+    }
+    .guarentee .btn a{
+        font-size: 1rem;
+    }
+    .guarentee .right-side{
+        margin-top: 5%;
+    }
+}
 /* Upcomming Session Css */
 .session-section{
     width: 65%;

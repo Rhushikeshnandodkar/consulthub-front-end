@@ -9,6 +9,7 @@ import { fetchConsultentCalender } from '../../features/consultents/consultentSl
 import { bookMeeting } from '../../features/bookings/bookingSlice'
 import ReviewCards from '../molecules/ReviewCards'
 import Loader from '../molecules/Loader'
+import Footer from '../molecules/Footer'
 function ConsultentDetail() {
   const navigate = useNavigate()
   const {id} = useParams()
@@ -251,6 +252,7 @@ function ConsultentDetail() {
         </>
       )
       }
+      <Footer/>
     </div>
   )
 }

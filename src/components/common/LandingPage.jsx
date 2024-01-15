@@ -2,8 +2,12 @@ import React from 'react'
 import { LandingPageStyle } from './common.style'
 import Navbar from '../molecules/Navbar'
 import Instructor from '../../images/amandhattarwal.jpg'
+import Video from '../../images/phonevideo.mp4'
+import Footer from '../molecules/Footer'
+import { Link } from 'react-router-dom'
 function LandingPage() {
   return (
+    <>
     <div>
     <Navbar/>
       <LandingPageStyle>
@@ -11,18 +15,31 @@ function LandingPage() {
             <div className="text">
                <div className="main-text">
                 <h1>A Place Where <b>People</b> Connect's With <b>Industry Experts</b> And Get Consultation.</h1>
-                <p>Chat with Expert's Who Have All the Answers, Just for You! Whether it's picking the coolest clothe's or learning new skill's, <br/> our platform connect's you with top consultant's to help you with anything and everything you need!</p>
-                <div className="btn"><a href="">Our Upcomming Session</a><a className="active" href="">Learn More About Platform</a></div>
+                <p>Chat with Expert's Who Have All the Answers, Just for You! Whether it's picking the coolest clothe's or learning new skill's</p>
+                <div className="btn"><a href="">Our Upcomming Session</a><a className="active" href="">Book Your Consultent Now</a></div>
                </div>
             </div>
     </section>
-
+    <section className="guarentee">
+        <div className="left-side">
+            <h3>Instant Appointment with our <b>Consultent</b></h3>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>8+</b> varified consultent</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>158+</b> successful mettings</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>117+</b> satisfied customers</p>
+            <div className="btn"><Link to="/consultents">Book Consultents</Link></div>
+        </div>
+        <div className="right-side">
+        <video autoPlay loop muted>
+            <source src={Video}/>
+        </video>
+        </div>
+    </section>
     <section class="heading">
         <h2>Our Upcomming Session</h2>
         <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
     </section>
         
-    <section class="session-section">
+    <section class="session-section" id='upsession'>
         <div class="left-side">
             <div class="host-image"><img src={Instructor} alt=""/>
                 <div class="social-icons"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
@@ -100,22 +117,12 @@ function LandingPage() {
                 <p>Connect to any consultant with just few click's</p>
             </div>
         </div>
-        <div class="email-input">
-            <div class="email-text">
-                <h2>Get Update's Of Our Platform</h2>
-                <p> Our platform will be launched soon, stay updated to get the early access and special discount's</p>
-            </div>
-            <div class="input-field">
-                <form action="/" method="POST">
-                   
-                    <input type="email" name="email" placeholder="Enter your Email"/>
-                    <button type="submit">Get Update's</button>
-                </form>
-            </div>
-        </div>
+       
     </section>
       </LandingPageStyle>
     </div>
+    <Footer/>
+    </>
   )
 }
 

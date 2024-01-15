@@ -51,10 +51,10 @@ function EditUserProfile() {
     e.preventDefault()
     const {first_name, last_name, phone_number, interests} = userInfo
     dispatch(createProfile({first_name, last_name, phone_number, interests}))
-    return navigate('/')
+    return navigate('/your-profile')
   }
   if(!user&& !userToken){
-    return navigate('/')
+    return navigate('/user-login')
   }
 
   console.log(userInfo)
@@ -84,10 +84,10 @@ function EditUserProfile() {
             <div className="interests">
               <div className="selected-options">
                 {userInfo.interests.map((val) => (
-              <button>
+              <div className='button'>
                   <h4>{val.interest}</h4>
                   <svg onClick={() => {handleRemoveOption(val.id)}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m15.5 15.5l-10-10zm0-10l-10 10"/></svg>
-              </button>
+              </div>
                 ))}
                 </div>
               <input onFocus={handleFocus} onChange={giveSuggetions} type="text" placeholder='Enter Your Interest'/>

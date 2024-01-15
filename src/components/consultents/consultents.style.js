@@ -85,6 +85,7 @@ export const ConsultentListStyle = styled.div`
     .cards-list{
     display: grid;
     grid-template-columns: 100%;
+    gap: 10px;
     /* gap: 20px; */
 }
 }
@@ -642,7 +643,7 @@ export const ConsutltentDetails = styled.div`
             margin: 1% 0 ;
         }
         .text-section p{
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         .constultations{
             flex-direction: column;
@@ -653,29 +654,36 @@ export const ConsutltentDetails = styled.div`
         }
         .rating{
             width: 50%;
-            margin: 4% 0;
+            margin: 2% 0;
         }
         .description ul{
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto auto;
             flex-direction: column;
             text-align: center;
-            width: 50%;
+            width: 95%;
+            margin-top: 2%;
         }
         .description ul li{
             margin-top: 5px;
+            font-size: 0.8rem;
 
         }
         .minute-sections{
             width: 80%;
             margin: 5% 0;
         }
+        .minute-sections .btn{
+            font-size: 0.9rem;
+        }
         .fees{
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2%;
         }
         .btn{
             margin: 1% 0;
+            font-size: 1rem;
+            padding: 1.8% 4%;
         }
         .user-description{
             width: 86%;
@@ -684,7 +692,7 @@ export const ConsutltentDetails = styled.div`
             width: 90%;
         }
         .user-description p{
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     }
 `;
@@ -734,7 +742,8 @@ export const CreateUserProfileStyle = styled.div`
     .interests{
         position: relative;
     }
-    .interests button{
+    .interests .button{
+        background-color: #80808057;
         display: flex;
         padding: 1% 1%;
         align-items: center;
@@ -749,13 +758,13 @@ export const CreateUserProfileStyle = styled.div`
     .selected-options{
         display: flex;
     }
-    .interests button h4{
+    .interests .button h4{
         margin: 0%;
         font-size: 1rem;
         font-weight: 400;
         margin-right: 20px;
     }
-    .interests button svg{
+    .interests .button svg{
         width: 25px;
         height: 25px;
         float: right;
@@ -792,6 +801,58 @@ export const CreateUserProfileStyle = styled.div`
         border-bottom: 0.3px solid #aeabab57;
         cursor: pointer;
     }
+    @media screen and (max-width:1000px){
+        .heading h1{
+            font-size: 1.3rem;
+            padding: 2%;
+        }
+        .form-section{
+            width: 90%;
+        }
+        .first-line{
+            flex-direction: column;
+        }
+        .form-section form .first-line input{
+            width: 96%;
+            font-size: 0.9rem;
+            margin-top: 2%;
+            padding: 2%;
+        }
+        .form-text h4{
+            font-size: 0.9rem;
+            margin-top: 3%;
+        }
+        .form-text p{
+            font-size: 0.8rem;
+            margin-bottom: 2%;
+        }
+        .form-section form input{
+            width: 96%;
+            font-size: 0.9rem;
+            padding: 2%;
+        }
+        .selected-options{
+            display: grid;
+            margin-bottom: 3%;
+            grid-template-columns:  50% 50%;
+        }
+        .selected-options .button{
+            padding: 3% 4%;
+        }
+        .interests .button h4{
+            font-size: 0.8rem;
+        }
+        .btn{
+            padding: 2% 4%;
+            font-size: 0.9rem;
+            margin-top: 4%;
+        }
+        .suggetions ul li{
+            font-size: 0.8rem;
+            padding: 2% 1%;
+        }
+    }
+
 `;
 
 export const EditProfileStyle = styled.div`
@@ -866,5 +927,24 @@ export const EditProfileStyle = styled.div`
     .booked-table table tbody tr td{
         font-size: 1.1rem;
         padding: 1%;
+    }
+    @media screen and (max-width:1000px){
+        .profile-info-section{
+            width: 90%;
+        }
+        .profile h2{
+            font-size: 0.9rem;
+        }
+        .edit-icon svg{
+            width: 22px;
+        }
+        .profile ul{
+            flex-direction: column;
+        }
+        .profile ul li{
+            font-size: 0.9rem;
+            padding: 2%;
+            margin: 1% 0;
+        }
     }
 `;

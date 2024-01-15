@@ -8,6 +8,7 @@ import { SearchStyle } from './consultents.style'
 import { useState } from 'react'
 import Loader from '../molecules/Loader'
 import { fetchCategories, fetchLanguages } from '../../features/consultents/fetchselect'
+import Footer from '../molecules/Footer'
 function Home() {
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [selectedSkill, setSelectedSkill] = useState('');
@@ -83,6 +84,7 @@ function Home() {
           </div>
         </div>
       </ConsultentListStyle>
+      <Footer/>
     </div>
   )
 }
