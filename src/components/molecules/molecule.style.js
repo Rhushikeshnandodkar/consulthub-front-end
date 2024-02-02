@@ -8,9 +8,9 @@ export const NavbarStyle = styled.div`
    .navbar{
     display: grid;
     grid-template-columns: 15% 65% 20%;
-    width: 76%;
+    width: 75%;
     margin: auto;
-    padding: 1% 0;
+    padding: 0.7% 0;
     align-items: center;
    } 
    .logo-section{
@@ -483,6 +483,7 @@ export const FooterStyle = styled.div`
     .footer-section{
         background-color: #f6f9fc;
         margin-top: 1%;
+
     }
     .footer{
         display: grid;

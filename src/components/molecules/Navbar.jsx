@@ -35,9 +35,9 @@ function Navbar() {
                   <ul>
                     <li><Link to={`/consultents`}>Find Consultent</Link></li>
                     {/* <li>Become Consultent</li> */}
-                    <li>About</li>
-                    <li>Connect Us</li>
-                    <li>Community</li>
+                    <li><Link to={`/about`}>About</Link></li>
+                    <li><Link to={`/contact`}>Connect Us</Link></li>
+                    <li><Link to={`/community`}>Community</Link></li>
                   </ul>
                 </div>
                 <div className="button-section">

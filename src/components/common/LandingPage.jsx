@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { LandingPageStyle } from './common.style'
 import Navbar from '../molecules/Navbar'
 import Instructor from '../../images/amandhattarwal.jpg'
 import Video from '../../images/phonevideo.mp4'
 import Footer from '../molecules/Footer'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchEventData } from '../../features/consultents/eventSlice'
+import Loader from '../molecules/Loader'
 function LandingPage() {
+    const dispatch = useDispatch()
+    const {eventLoading, eventData, eventError} = useSelector((state) => ({
+        ...state.events
+    }))
+    useEffect(() => {
+        dispatch(fetchEventData())
+    }, [dispatch])
   return (
     <>
     <div>
     <Navbar/>
       <LandingPageStyle>
+        
       <section className="text-section">
             <div className="text">
                <div className="main-text">
@@ -38,56 +49,58 @@ function LandingPage() {
         <h2>Our Upcomming Session</h2>
         <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
     </section>
-        
-    <section class="session-section" id='upsession'>
-        <div class="left-side">
-            <div class="host-image"><img src={Instructor} alt=""/>
-                <div class="social-icons"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.028 2.001a78.82 78.82 0 0 1 2.189.022l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.154a4.908 4.908 0 0 1 1.153 1.771c.247.637.415 1.364.465 2.428c.012.266.022.488.03.712l.006.194a79 79 0 0 1 .023 2.188l.001.746v1.31a78.836 78.836 0 0 1-.023 2.189l-.006.194c-.008.224-.018.445-.03.712c-.05 1.064-.22 1.79-.466 2.427a4.884 4.884 0 0 1-1.153 1.772a4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465c-.267.012-.488.022-.712.03l-.194.006a79 79 0 0 1-2.189.023l-.746.001h-1.309a78.836 78.836 0 0 1-2.189-.023l-.194-.006a60.64 60.64 0 0 1-.712-.03c-1.064-.05-1.79-.22-2.428-.466a4.89 4.89 0 0 1-1.771-1.153a4.904 4.904 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.427a74.367 74.367 0 0 1-.03-.712l-.005-.194A79.053 79.053 0 0 1 2 13.028v-2.056a78.82 78.82 0 0 1 .022-2.188l.007-.194c.008-.224.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.88 4.88 0 0 1 3.68 3.68a4.897 4.897 0 0 1 1.77-1.155c.638-.247 1.363-.415 2.428-.465l.712-.03l.194-.005A79.053 79.053 0 0 1 10.972 2h2.056Zm-1.028 5A5 5 0 1 0 12 17a5 5 0 0 0 0-10Zm0 2A3 3 0 1 1 12.001 15a3 3 0 0 1 0-6Zm5.25-3.5a1.25 1.25 0 0 0 0 2.498a1.25 1.25 0 0 0 0-2.5Z"/></svg></div>
-            </div>
-            </div>
+
+   {eventLoading ? <Loader/>: 
+    <>{eventData && 
+        <>
             
-        <div class="right-side">
-            <div class="host-info">
-                <h3>Aman Dhattarwal</h3>
-                <h4><b>Founder Of Apana College</b></h4>
-                <div class="r-side">
-                    <p><ul>
-                        <li>
-                            <div class="dot"></div>
-                            <h4>Mechanical Engineering From VIIT</h4>
-                            <p>you can book our cabs online using our latest platform</p>
-                        </li>
-                        <li>
-    
-                            <div class="dot"></div>
-                            <h4>Journey Of Being Full Stack Developer</h4>
-                            <p>you can book our cabs online using our latest platform</p>
-                            <div class="dot last"></div>
-                        </li>
-                        <li>
-    
-                            <div class="dot"></div>
-                            <h4>Journey Of Starting Own Business</h4>
-                            <p>you can book our cabs online using our latest platform</p>
-                            <div class="dot last"></div>
-                        </li>
-                        <li>
-    
-    <div class="dot"></div>
-    <h4>Marrige With Shraddha Didi</h4>
-    <p>you can book our cabs online using our latest platform</p>
-    <div class="dot last"></div>
-</li>
-                    </ul></p>
+        <section class="session-section" id='upsession'>
+            <div class="left-side">
+                <div class="host-image"><img src={Instructor} alt=""/>
+                    <div class="social-icons"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.028 2.001a78.82 78.82 0 0 1 2.189.022l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.154a4.908 4.908 0 0 1 1.153 1.771c.247.637.415 1.364.465 2.428c.012.266.022.488.03.712l.006.194a79 79 0 0 1 .023 2.188l.001.746v1.31a78.836 78.836 0 0 1-.023 2.189l-.006.194c-.008.224-.018.445-.03.712c-.05 1.064-.22 1.79-.466 2.427a4.884 4.884 0 0 1-1.153 1.772a4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465c-.267.012-.488.022-.712.03l-.194.006a79 79 0 0 1-2.189.023l-.746.001h-1.309a78.836 78.836 0 0 1-2.189-.023l-.194-.006a60.64 60.64 0 0 1-.712-.03c-1.064-.05-1.79-.22-2.428-.466a4.89 4.89 0 0 1-1.771-1.153a4.904 4.904 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.427a74.367 74.367 0 0 1-.03-.712l-.005-.194A79.053 79.053 0 0 1 2 13.028v-2.056a78.82 78.82 0 0 1 .022-2.188l.007-.194c.008-.224.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.88 4.88 0 0 1 3.68 3.68a4.897 4.897 0 0 1 1.77-1.155c.638-.247 1.363-.415 2.428-.465l.712-.03l.194-.005A79.053 79.053 0 0 1 10.972 2h2.056Zm-1.028 5A5 5 0 1 0 12 17a5 5 0 0 0 0-10Zm0 2A3 3 0 1 1 12.001 15a3 3 0 0 1 0-6Zm5.25-3.5a1.25 1.25 0 0 0 0 2.498a1.25 1.25 0 0 0 0-2.5Z"/></svg></div>
                 </div>
+                </div>
+                
+            <div class="right-side">
+                <div class="host-info">
+                    <h3>{eventData.speaker_name}</h3>
+                    <h4><b>{eventData.speaker_tagline}</b></h4>
+                    <div class="r-side">
+                        <p><ul>
+                            <li>
+                                <div class="dot"></div>
+                                <h4>{eventData.achievement_one}</h4>
+                                <p>{eventData.subachievement_one}</p>
+                            </li>
+                            <li>
+                                <div class="dot"></div>
+                                <h4>{eventData.achievement_two}</h4>
+                                <p>{eventData.subachievement_two}</p>
+                            </li>
+                            <li>
+                                <div class="dot"></div>
+                                <h4>{eventData.achievement_three}</h4>
+                                <p>{eventData.subachievement_three}</p>
+                            </li>
+                            <li>
+                                <div class="dot"></div>
+                                <h4>{eventData.achievement_four}</h4>
+                                <p>{eventData.subachievement_four}</p>
+                            </li>
+                        </ul></p>
+                    </div>
+                </div>
+                <div class="schedule">
+                    <p>{eventData.event_date} {eventData.event_time}</p>
+                </div>
+                <div class="btn"><a href="/register">Register Now</a></div>
             </div>
-            <div class="schedule">
-                <p>4 November 2023 11:30 PM</p>
-            </div>
-            <div class="btn"><a href="/register">Register Now</a></div>
-        </div>
-    </section>
+        </section>
+        </>
+    }</>
+   
+   }
 
 
     <section class="heading">

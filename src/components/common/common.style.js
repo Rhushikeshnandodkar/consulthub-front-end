@@ -11,7 +11,10 @@ export const LandingPageStyle = styled.div`
     color: var(--blackish);
     font-family: 'DM Sans', sans-serif;
     position: relative;
-    
+}
+
+.schedule p{
+    font-family:  'DM Sans', sans-serif;
 }
 
 .text-section .text{
@@ -437,5 +440,166 @@ export const LandingPageStyle = styled.div`
         margin-top: 5%;
     }
 }
+`;
 
+export const AboutStyle = styled.div`
+    .about-section{
+        width: 65%;
+        margin: 3% auto;
+        text-align: center;
+    }
+    .about-section h2{
+        font-size: 1.8rem;
+    }
+    .about-section p{
+        font-size: 1.1rem;
+    }
+    .problem{
+        text-align: left;
+        background-color: #f7f7f7;
+        padding: 2%;
+        margin-bottom: 2%;
+    }
+    .problem h3{
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #353333;
+    }
+    @media (max-width:1000px) {
+        .about-section{
+            width: 90%;
+            margin: 5% auto;
+        }
+        .about-section h2{
+            font-size: 1.1rem;
+            margin: 0;
+            padding: 0;
+        }
+        .about-section p{
+            margin-top: 4px;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        .problem{
+            padding: 5%;
+            margin: 3% 0;
+        }
+        .problem h3{
+            font-size: 1rem;
+            margin: 4px 0;
+        }
+        .problem p{
+            font-size: 0.9rem;
+        }
+    }
+`;
+
+export const ContactStyle = styled.div`
+    .contact-head{
+        text-align: center;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 5%;
+    }
+    .contact-head h1{
+        font-size: 2.4rem;
+        font-weight: bolder;
+        margin: 0;
+    }
+    .contact-head p{
+        margin: 4px 0;
+        font-size: 1.1rem;
+    }
+    .contact-section{
+        width: 75%;
+        margin: 3% auto;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        text-align: center;
+        position: absolute;
+    top: 43%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%); 
+
+    }
+    .contact-box{
+        background-color: white;
+        border: 1px solid #ebe4e4;
+        padding: 4%;
+        margin: 1%;
+    }
+    .contact-box svg{
+        color: gray;
+        font-size: 50px;
+    }
+    .contact-box p{
+        font-size: 1.1rem;
+    }
+`;
+
+export const CommunityStyle = styled.div`
+    .heading{
+        text-align: center;
+        margin: 2% 0;
+    }
+    .heading h1{
+        font-weight: 500;
+    }
+    .com-cards{
+        display: grid;
+        grid-template-columns: 23% 23% 23% 23%;
+        gap: 2%;
+        width: 75%;
+        margin: auto;
+    }
+    .com-cards .single-card{
+        border: 0.4px solid #e8e4e4;
+    }
+    .com-cards .image-section img{
+        width: 100%;
+    }
+    .com-cards .text-section{
+        padding: 2% 5%;
+    }
+    .com-cards .text-section h3{
+        margin: 1% 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .com-cards .text-section ul{
+        list-style: none;
+        margin: 3% 0;
+        padding: 0;
+    }
+    .com-cards .text-section ul li{
+        padding: 1% 0;
+        font-size: 1rem;
+        align-items: center;
+        display: flex;
+    }
+    .com-cards .text-section ul li h5{
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0 3%;
+    }
+    .com-cards .text-section ul li svg{
+        width: 25px;
+        height: 25px;
+    }
+    .btn{
+        text-align: center;
+    }
+    .com-cards a{
+        text-decoration: none;
+        color: #6000F9;
+    }
+    .btn{
+        padding: 2%.5%;
+        width: 92%;
+        margin: 3% auto;
+        border: 1px solid #6000F9;
+    
+    }
 `;

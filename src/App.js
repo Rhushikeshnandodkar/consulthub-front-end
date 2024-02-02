@@ -13,6 +13,9 @@ import BookingThanks from './components/molecules/BookingThanks';
 import EditUserProfile from './components/consultents/EditUserProfile';
 import UserProfile from './components/consultents/UserProfile';
 import LandingPage from './components/common/LandingPage';
+import About from './components/common/About';
+import Contact from './components/common/Contact';
+import Community from './components/common/Community';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -29,6 +32,10 @@ function App() {
       <Route path='thank-you' element={<BookingThanks/>}/>
       <Route path='create-profile' element={<EditUserProfile/>}/>
       <Route path='your-profile' element={<UserProfile/>}/>
+      <Route path='about' element={<About/>}/>
+      <Route path='contact' element={<Contact/>}/>
+      <Route path='community' element={<Community/>}/>
+
     </Routes>
   );
 }
