@@ -35,7 +35,7 @@ function ConsultentDetail() {
     e.preventDefault();
     const {review_title, review_text, rating, user_name} = reviewData
     dispatch(postReview({review_title, review_text, rating, user_name: user.first_name,  uId: id}))
-    return navigate('/')
+    return navigate(0)
   }
   const[formData, setFormData] = useState((state) =>({
     loggedUser: null,

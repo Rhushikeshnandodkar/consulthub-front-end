@@ -12,6 +12,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 function UserSignup() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const[loginUser, setLoginUser] = useState([])
   const googleLogin = useGoogleLogin({
     onSuccess : (codeResponse) => SendToken(codeResponse),
@@ -25,7 +26,6 @@ function UserSignup() {
   const responseMessage = (response) => {
     console.log(response);
 };
-  const navigate = useNavigate()
   const {user, userToken, isLoading, status} = useSelector((state) => ({
     ...state.user
   }))

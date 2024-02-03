@@ -214,10 +214,22 @@ export const NavbarStyle = styled.div`
         flex-direction: column;
         margin: 2% -8%;
     }
+    .response-bar .button-section{
+        width: 70%;
+    }
     .response-bar .button-section button{
         background-color: #f2f2f2;
-        color: #6000F9;
-        border: 1px solid #6000F9;
+    color: #6000F9;
+    border: 1px solid #6000F9;
+    padding: 2% 15%;
+    margin: 0% 0;
+    margin-bottom: 12%;
+    }
+    .button-section button:hover a{
+    color: #6000F9;
+   }
+    .response-bar .button-section button a{
+        font-size: 0.9rem;
     }
     .response-bar .logo-section{
         display: flex;
@@ -441,6 +453,28 @@ export const ReviewCardStyle = styled.div`
         font-size: 0.9rem;
         margin: 7px 0;
     }
+    @media screen and (max-width:1000px){
+    .card-section h4{
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .card-section h5{
+        font-size: 1rem;
+        margin: 6px 0;
+        font-weight: 500;
+    }
+    .card-section p{
+        font-size: 0.9rem;
+        color: #535151;
+    }
+    .date p{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: gray;
+        font-size: 0.8rem;
+        margin: 7px 0;
+    }
+}
 `;
 
 export const ThanksStyle = styled.div`
@@ -476,6 +510,27 @@ export const ThanksStyle = styled.div`
         font-size: 1.2rem;
         text-align: center;
         text-decoration: none;
+    }
+    @media screen and (max-width:1000px){
+        .thanks-section{
+            width: 90%;
+        }
+        .thanks-icon svg{
+            width: 70px;
+            height: 70px;
+        }
+        .thanks-text p{
+            font-size: 1.1rem;
+        }
+        .thanks-text h1{
+            font-size: 1.4rem;
+        }
+        .thanks-text button{
+            padding: 1.5% 2.5%;
+        }
+        .thanks-text button a{
+            font-size: 1rem;
+        }
     }
 `;
 

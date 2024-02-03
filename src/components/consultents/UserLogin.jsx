@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { userLogin } from '../../features/userAuth/userSlice'
 import imageUrl from "../../images/login.png"
 import googleLogo from "../../images/google-logo.png"
@@ -9,6 +9,7 @@ import { LoginPageStyle } from './consultents.style'
 import Navbar from '../molecules/Navbar'
 import { useGoogleLogin } from '@react-oauth/google'
 import { googleUserLogin } from '../../features/userAuth/userSlice'
+
 function UserLogin() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ function UserLogin() {
   const SendToken = async (tokenInfo) => {
     console.log(tokenInfo.access_token)
     dispatch(googleUserLogin(tokenInfo.access_token))
+    return navigate(-1)
   }
   const [isactive, setIsactive] = useState(false)
   const[formData, setFormData] = useState({
@@ -35,12 +37,13 @@ function UserLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const {email, password} = formData
-    dispatch(userLogin({email, password}))
+    dispatch(userLogin({email, password})) 
   }
-
-  if(user&& userToken){
-    return navigate('/')
-  }
+  
+    if(user&& userToken){
+      return navigate(-1)
+    }
+  
 
   return (
     <div>

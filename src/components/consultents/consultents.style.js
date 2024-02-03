@@ -477,7 +477,7 @@ export const ConsutltentDetails = styled.div`
         /* justify-content: space-around; */
         list-style: none;
         margin: 2% 0;
-        width: 50%;
+        width: 80%;
         text-align: center;
         padding: 0;
     }
@@ -688,11 +688,23 @@ export const ConsutltentDetails = styled.div`
         .user-description{
             width: 86%;
         }
+        .user-description h3{
+            font-size: 1.1rem;
+            margin: 2% 0;
+        }
         .review-section{
             width: 90%;
         }
+        .user-description h4{
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        .user-description ul li{
+            font-size: 1rem;
+        }
         .user-description p{
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            margin: 2% 0;
         }
     }
 `;
@@ -920,12 +932,14 @@ export const EditProfileStyle = styled.div`
         padding: 1%;
         color: white;
         font-size: 1.2rem;
+        text-align: left;
     }
     .booked-table table tbody tr {
         border: 1px solid #aeabab57;
     }
     .booked-table table tbody tr td{
         font-size: 1.1rem;
+        text-align: left;
         padding: 1%;
     }
     @media screen and (max-width:1000px){
@@ -945,6 +959,17 @@ export const EditProfileStyle = styled.div`
             font-size: 0.9rem;
             padding: 2%;
             margin: 1% 0;
+        }
+        .booked-table{
+            width: 90%;
+        }
+        .booked-table table thead th{
+            font-size: 1rem;
+            padding: 2%;
+        }
+        .booked-table table tbody tr td{
+            font-size: 0.9rem;
+            padding: 2%;
         }
     }
 `;

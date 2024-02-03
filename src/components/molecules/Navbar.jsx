@@ -33,6 +33,7 @@ function Navbar() {
                 </div>
                 <div className="menu-section">
                   <ul>
+                  <li><Link to={`/`}>Home</Link></li>
                     <li><Link to={`/consultents`}>Find Consultent</Link></li>
                     {/* <li>Become Consultent</li> */}
                     <li><Link to={`/about`}>About</Link></li>
@@ -62,13 +63,15 @@ function Navbar() {
         <div className={`response-bar ${isMenuOpen ? 'open' : ''}`}>
                   <div className="bar-section">
                   <div className="logo-section">
-                <img src={consultlogo} alt="" />
+                  <Link to={'/'}>   <img src={consultlogo} alt="" /></Link>
                 </div>
               <ul>
-                    <li><Link to={`/consultents`}>Find Consultent</Link></li>
-                    <li>About</li>
-                    <li>Connect Us</li>
-                    <li>Community</li>
+              <li><Link to={`/`}>Home</Link></li>
+              <li><Link to={`/consultents`}>Find Consultent</Link></li>
+                    {/* <li>Become Consultent</li> */}
+                    <li><Link to={`/about`}>About</Link></li>
+                    <li><Link to={`/contact`}>Connect Us</Link></li>
+                    <li><Link to={`/community`}>Community</Link></li>
                     <div className="button-section">
                  {user && userToken ? 
                  <>

@@ -72,6 +72,7 @@ export const LandingPageStyle = styled.div`
     color: white;
     transition: 0.7s ease;
 }
+
 @media (max-width:1000px) {
     .text h1{
         font-size: 1.4rem;
@@ -220,7 +221,7 @@ export const LandingPageStyle = styled.div`
 }
 /* Upcomming Session Css */
 .session-section{
-    width: 65%;
+    width: 60%;
     margin: 3% auto;
     display: flex;
     justify-content: space-evenly;
@@ -228,6 +229,11 @@ export const LandingPageStyle = styled.div`
 }
 .host-image{
     position: relative;
+}
+.host-image img{
+    width: 500px;
+  aspect-ratio: 1/1.2;
+  object-fit: cover;
 }
 .social-icons{
     position: absolute;
@@ -254,7 +260,7 @@ export const LandingPageStyle = styled.div`
     font-weight: 400;
 }
 .r-side{
-    margin-top: 5%;
+    margin-top: 3%;
 }
 .r-side ul li{
     padding-bottom: 6%;
@@ -307,6 +313,11 @@ export const LandingPageStyle = styled.div`
     .r-side p{
         font-size: 0.9rem;
     }
+    .host-image img{
+    width: 100%;
+  aspect-ratio: 1/1.2;
+  object-fit: cover;
+}
 }
 .cards{
     display: grid;
@@ -453,6 +464,7 @@ export const AboutStyle = styled.div`
     }
     .about-section p{
         font-size: 1.1rem;
+        color: #312f2f;
     }
     .problem{
         text-align: left;
@@ -514,13 +526,7 @@ export const ContactStyle = styled.div`
         width: 75%;
         margin: 3% auto;
         display: grid;
-        grid-template-columns: 70% 30%;
-        text-align: center;
-        position: absolute;
-    top: 43%;  /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
-
-    transform: translate(-50%, -50%); 
+        grid-template-columns: 50% 50%;
 
     }
     .contact-box{
@@ -535,6 +541,21 @@ export const ContactStyle = styled.div`
     }
     .contact-box p{
         font-size: 1.1rem;
+    }
+    @media (max-width:1000px) {
+        .contact-head h1{
+            font-size: 1.4rem;
+        }
+        .contact-head p{
+            font-size: 0.9rem;
+        }
+        .contact-section{
+            grid-template-columns: auto;
+            width: 90%;
+        }
+        .contact-box p{
+            font-size: 0.9rem;
+        }
     }
 `;
 
@@ -601,5 +622,18 @@ export const CommunityStyle = styled.div`
         margin: 3% auto;
         border: 1px solid #6000F9;
     
+    }
+    @media (max-width:1000px) {
+        .com-cards{
+            grid-template-columns: auto;
+            width: 90%;
+        }
+        .heading h1{
+            font-size: 1.3rem;
+            margin: 4%;
+        }
+        .com-cards .text-section h3{
+            font-size: 1.1rem;
+        }
     }
 `;

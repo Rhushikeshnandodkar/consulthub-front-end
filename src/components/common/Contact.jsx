@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../molecules/Navbar'
 import { ContactStyle } from './common.style'
+import Footer from '../molecules/Footer'
 function Contact() {
   return (
     <div>
@@ -23,6 +24,7 @@ function Contact() {
         </div>
       </div>
       </ContactStyle>
+      <Footer/>
     </div>
   )
 }

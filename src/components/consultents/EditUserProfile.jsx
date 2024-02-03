@@ -5,15 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { eventWrapper } from '@testing-library/user-event/dist/utils';
 import { createProfile, getInterests } from '../../features/userAuth/userSlice';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../molecules/Footer';
 function EditUserProfile() {
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {interests, user, userToken} = useSelector((state) => ({
     ...state.user
   }))
+
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [userInfo, setUserInfo] = useState({first_name: user.first_name, last_name: user.last_name, phone_number: user.phone_number, interests:user.interests})
+  const [userInfo, setUserInfo] = useState({first_name: user&& user.first_name, last_name: user && user.last_name, phone_number: user && user.phone_number, interests:user && user.interests})
+  if(!user){
+    return navigate('/')
+  }
+
   const onChange = (e) =>{
     const {name, value} = e.target 
     setUserInfo({...userInfo, [name]: value})
@@ -53,11 +60,8 @@ function EditUserProfile() {
     dispatch(createProfile({first_name, last_name, phone_number, interests}))
     return navigate('/your-profile')
   }
-  if(!user&& !userToken){
-    return navigate('/user-login')
-  }
 
-  console.log(userInfo)
+
   return (
     <div>
       <Navbar/>
@@ -104,6 +108,7 @@ function EditUserProfile() {
           </form>
         </div>
       </CreateUserProfileStyle>
+      <Footer/>
     </div>
   )
 }
