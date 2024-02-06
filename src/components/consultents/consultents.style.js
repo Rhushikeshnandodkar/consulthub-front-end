@@ -315,6 +315,9 @@ export const LoginPageStyle = styled.div`
    .google-image img{
     width: 100%;
    }
+   .form-section{
+    width: 90%;
+   }
    @media screen and (max-width:1000px){
     .login-page{
         grid-template-columns: auto;
@@ -324,6 +327,9 @@ export const LoginPageStyle = styled.div`
         border: 1px solid #80808057;
         padding: 4%;
     }
+    .form-section{
+    width: 100%;
+   }
     .form-section h2{
         text-align: center;
         font-size: 1.2rem;
@@ -718,6 +724,15 @@ export const CreateUserProfileStyle = styled.div`
         font-weight: 400;
         color: gray;
     }
+    .alert h6{
+    font-size: 0.9rem;
+    margin: 5px 0;
+    border: 2px solid #db12125c;
+    background-color: #ff00002e;
+    padding: 3px;
+    font-weight: 400;
+    color: #ff0000a8;
+}
     .form-section{
         width: 75%;
         margin: auto;

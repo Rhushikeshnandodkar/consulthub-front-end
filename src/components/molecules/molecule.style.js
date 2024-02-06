@@ -401,6 +401,9 @@ export const CardStyle = styled.div`
 `;
 
 export const LoaderStyle = styled.div`
+.loader-section{
+    height: 100vh;
+}
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #6000F9; /* Blue */
@@ -421,6 +424,7 @@ export const LoaderStyle = styled.div`
     .loader{
         width: 50px;
         height: 50px;
+        left: 38%;
     }
 }
 `;

@@ -16,6 +16,7 @@ import LandingPage from './components/common/LandingPage';
 import About from './components/common/About';
 import Contact from './components/common/Contact';
 import Community from './components/common/Community';
+import Notfound from './components/common/Notfound';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -23,18 +24,18 @@ function App() {
   }, [])
   return (
     <Routes>
-      <Route path='/' element={<LandingPage/>}/>
-      <Route path='/consultents' element={<Home/>}/>
-
-      <Route path='product-detail/:id' element={<ConsultentDetail/>}/>
-      <Route path='user-login' element={<UserLogin/>}/>
-      <Route path='user-signup' element={<UserSignup/>}/>
-      <Route path='thank-you' element={<BookingThanks/>}/>
-      <Route path='create-profile' element={<EditUserProfile/>}/>
-      <Route path='your-profile' element={<UserProfile/>}/>
-      <Route path='about' element={<About/>}/>
-      <Route path='contact' element={<Contact/>}/>
-      <Route path='community' element={<Community/>}/>
+      <Route exact path='/' element={<LandingPage/>}/>
+      <Route exact path='/consultents' element={<Home/>}/>
+      <Route exact path='product-detail/:id' element={<ConsultentDetail/>}/>
+      <Route exact path='user-login' element={<UserLogin/>}/>
+      <Route exact path='user-signup' element={<UserSignup/>}/>
+      <Route exact path='thank-you' element={<BookingThanks/>}/>
+      <Route exact path='create-profile' element={<EditUserProfile/>}/>
+      <Route exact path='your-profile' element={<UserProfile/>}/>
+      <Route exact path='about' element={<About/>}/>
+      <Route exact path='contact' element={<Contact/>}/>
+      <Route exact path='community' element={<Community/>}/>
+      <Route path="*" element={<Notfound />}/>
 
     </Routes>
   );

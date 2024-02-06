@@ -5,7 +5,9 @@ function Loader() {
 
   return (
     <LoaderStyle>
+      <div className="loader-section">
  <div class="loader"></div> 
+ </div>
     </LoaderStyle>
   )
 }

@@ -2,13 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createReducer } from "@reduxjs/toolkit";
 import userSlice from "../userAuth/userSlice";
 import axios from "axios";
+import { url } from "../../components/common/api";
 
 export const bookMeeting = createAsyncThunk("booking/bookMeet", async(data, thunkAPI) =>{
     console.log(data)
     try{
         const config = {
             method : 'post',
-            url : "http://consulthub.com:8000/api/booking/book-meet",
+            url : `${url}/api/booking/book-meet`,
             headers : {
                 'Authorization': `Bearer ${localStorage.getItem("userToken")}`,
                 'Content-Type': 'application/json'

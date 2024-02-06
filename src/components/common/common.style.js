@@ -9,7 +9,6 @@ export const LandingPageStyle = styled.div`
     /* position: relative; */
     text-align: center;
     color: var(--blackish);
-    font-family: 'DM Sans', sans-serif;
     position: relative;
 }
 
@@ -76,6 +75,7 @@ export const LandingPageStyle = styled.div`
 @media (max-width:1000px) {
     .text h1{
         font-size: 1.4rem;
+        color: #353535;
     }
     .main-text{
         width: 90%;
@@ -86,6 +86,7 @@ export const LandingPageStyle = styled.div`
         font-size: 0.9rem;
         width: 95%;
         margin: 2% auto;
+        color: #484848;
     }
     .text .btn{
         display: flex;
@@ -118,7 +119,6 @@ export const LandingPageStyle = styled.div`
 .heading h2{
     font-size: 2rem;
     font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
 }
 .heading p{
     font-size: 1.1rem;
@@ -637,3 +637,38 @@ export const CommunityStyle = styled.div`
         }
     }
 `;
+
+export const NotFoundStyle = styled.div`
+        .container{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .container h1{
+        font-size: 4rem;
+        color: #6000F9;
+    }
+    .container h4{
+        font-size: 1.4rem;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 1% 0;
+    }
+    .container p{
+        font-size: 1.2rem;
+        color: rgb(70, 67, 67);
+        margin: 2% 0;
+    }
+    .container .btn a{
+        color: white;
+        text-decoration: none;
+    }
+    .container .btn{
+        background-color: #6000F9;
+        padding: 2% 3%;
+        border: none;
+        font-size: 1.2rem;
+        margin-top: 2%;
+    }
+`

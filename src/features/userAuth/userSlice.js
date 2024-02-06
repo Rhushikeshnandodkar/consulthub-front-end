@@ -136,9 +136,9 @@ export const getInterests = createAsyncThunk("user/getinterests", async(key) => 
     return response.json()
 })
 export const createProfile = createAsyncThunk('user/createprofile', async(data, thunkAPI) =>{
-    console.log(data, "dsata")
+
     try{
-        const res = fetch(`${url}/api/auth/user-info`, {
+        const res = await fetch(`${url}/api/auth/user-info`, {
             method: "PATCH",
             headers : {
                 "Content-Type" : "application/json",
@@ -147,7 +147,12 @@ export const createProfile = createAsyncThunk('user/createprofile', async(data, 
             }  ,
             body: JSON.stringify(data)
         })
-        return res.data
+        if(res.status == 200){
+            const response = await res.json()
+            return response
+        }else{
+            return thunkAPI.rejectWithValue(res.json())
+        }
     }catch(err){
         return thunkAPI.rejectWithValue(err)
     }
@@ -181,7 +186,8 @@ const initialState = {
     error : false,
     status : null,
     interests : null,
-    bookings : null
+    bookings : null, 
+    userProfile : null
 }
 const userSlice = createSlice({
     name : "user",
@@ -302,6 +308,20 @@ const userSlice = createSlice({
         .addCase(getInterests.rejected, (state, action) => {
             state.isLoading = false;
             // state.loading = false;
+            state = action.payload;
+        })
+        .addCase(createProfile.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(createProfile.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.status = 200
+            console.log(action.payload)
+            state.userProfile = action.payload
+        })
+        .addCase(createProfile.rejected, (state, action) => {
+            state.isLoading = false;
+            state.status = 409;
             state = action.payload;
         });
     }
