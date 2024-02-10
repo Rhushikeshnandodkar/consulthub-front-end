@@ -58,6 +58,8 @@ function EditUserProfile() {
     e.preventDefault()
     const {first_name, last_name, phone_number, interests} = userInfo
     dispatch(createProfile({first_name, last_name, phone_number, interests}))
+  }
+  if(status == 200){
     return navigate("/your-profile")
   }
 
@@ -71,6 +73,8 @@ function EditUserProfile() {
         </div>
         <div className="form-section">
         {status==409 ? <><div className="alert"><h6>Phone number allready exists</h6></div></> : <></>}
+        {status==200 ? <><div className="success"><h6>Data Saved Successfully</h6></div></> : <></>}
+
           <form action="" onSubmit={handleSubmit}>
             <div className="first-line">
               <input type="text" placeholder='Enter Your First Name' name="first_name" value={userInfo.first_name} onChange={onChange}/>

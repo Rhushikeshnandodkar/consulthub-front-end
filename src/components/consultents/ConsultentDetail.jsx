@@ -69,7 +69,7 @@ function ConsultentDetail() {
   }
   const bookMeetingbutton = () =>{
     if(!userToken || !isAuthenticated){
-      return navigate("/user-login")
+      return navigate("/user-signup")
     }else{
       console.log(user.id)
       setFormData()

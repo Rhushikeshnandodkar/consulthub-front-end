@@ -34,10 +34,10 @@ function Navbar() {
                 <div className="menu-section">
                   <ul>
                   <li><Link to={`/`}>Home</Link></li>
-                    <li><Link to={`/consultents`}>Find Consultent</Link></li>
+                    <li><Link to={`/consultents`}>Find Consultant</Link></li>
                     {/* <li>Become Consultent</li> */}
                     <li><Link to={`/about`}>About</Link></li>
-                    <li><Link to={`/contact`}>Connect Us</Link></li>
+                    <li><Link to={`/contact`}>Contact Us</Link></li>
                     <li><Link to={`/community`}>Community</Link></li>
                   </ul>
                 </div>
@@ -50,7 +50,7 @@ function Navbar() {
                 <button className="btn">Profile</button></Link>
 
                  </>
-                 :  <button className="btn"><Link to={'/user-login'}>Login/Signup</Link></button>}
+                 :  <Link to={'/user-login'}><button className="btn">Login/Signup</button></Link>}
                 </div>
                 <div className={`burger ${isMenuOpen ? 'remove' : ''}`}>
                   <button onClick={toggleMenu}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h18M3 12h18M3 7h18"/></svg></button>
@@ -67,10 +67,10 @@ function Navbar() {
                 </div>
               <ul>
               <li><Link to={`/`}>Home</Link></li>
-              <li><Link to={`/consultents`}>Find Consultent</Link></li>
+              <li><Link to={`/consultents`}>Find Consultant</Link></li>
                     {/* <li>Become Consultent</li> */}
                     <li><Link to={`/about`}>About</Link></li>
-                    <li><Link to={`/contact`}>Connect Us</Link></li>
+                    <li><Link to={`/contact`}>Contact Us</Link></li>
                     <li><Link to={`/community`}>Community</Link></li>
                     <div className="button-section">
                  {user && userToken ? 

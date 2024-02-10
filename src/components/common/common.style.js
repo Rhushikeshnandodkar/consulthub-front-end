@@ -318,6 +318,18 @@ export const LandingPageStyle = styled.div`
   aspect-ratio: 1/1.2;
   object-fit: cover;
 }
+.r-side ul li h4{
+    font-size: 1rem;
+}
+.r-side ul li h4{
+    font-size: 0.9rem;
+}
+.schedule p{
+    font-size: 1rem;
+}
+.host-info h4 b{
+    padding: 1% 0;
+}
 }
 .cards{
     display: grid;

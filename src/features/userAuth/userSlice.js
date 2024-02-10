@@ -265,6 +265,7 @@ const userSlice = createSlice({
             state.isLoading = false
             state.user = action.payload
             state.isAuthenticated = true;
+            state.status = null;
         })
         .addCase(getUserInfo.rejected, (state, {payload}) => {
             state.isLoading = false
@@ -311,6 +312,7 @@ const userSlice = createSlice({
             state = action.payload;
         })
         .addCase(createProfile.pending, (state) => {
+            state.status = null;
             state.isLoading = true;
         })
         .addCase(createProfile.fulfilled, (state, action) => {

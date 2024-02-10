@@ -547,7 +547,7 @@ export const FooterStyle = styled.div`
     .footer{
         display: grid;
         grid-template-columns: 35% 20% 20% 20%;
-        padding: 3%;
+        padding: 3% 3% 2% 3%;
         width: 75%;
         margin: auto;
     }
@@ -588,7 +588,28 @@ export const FooterStyle = styled.div`
         padding: 2%  0;
         font-size: 1.1rem;
     }
+    .line ul li a{
+        color: black;
+        text-decoration: none;
+    }
+    .line ul li b{
+        font-weight: 500;
+
+    }
+    .copy {
+        text-align: center;
+        padding-bottom: 1%;
+    }
+    .copy h5{
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 0;
+        font-weight: 400;
+    }
     @media screen and (max-width:1000px){
+    .copy h5{
+        font-size: 0.9rem;
+    }
     .footer{
         grid-template-columns: auto;
         width: 85%;
@@ -621,5 +642,6 @@ export const FooterStyle = styled.div`
     .line ul li{
         font-size: 0.9rem;
     }
+
 }
 `;

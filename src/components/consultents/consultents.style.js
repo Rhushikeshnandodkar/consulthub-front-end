@@ -733,6 +733,15 @@ export const CreateUserProfileStyle = styled.div`
     font-weight: 400;
     color: #ff0000a8;
 }
+.success h6{
+    font-size: 0.9rem;
+    margin: 5px 0;
+    border: 2px solid #0080007a;
+    background-color: #0080007a;
+    padding: 3px;
+    font-weight: 400;
+    color: white;
+}
     .form-section{
         width: 75%;
         margin: auto;

@@ -14,6 +14,7 @@ function UserSignup() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const[loginUser, setLoginUser] = useState([])
+  const[passmatch, setPassmatch] = useState(false)
   const googleLogin = useGoogleLogin({
     onSuccess : (codeResponse) => SendToken(codeResponse),
     onError : (error) => console.log(error)
@@ -45,7 +46,11 @@ function UserSignup() {
     // dispatch(formData)
     console.log("submitted")
     const {email, password, password_again} = formData
-    dispatch(userSignup({username: email, email, password, password_again}))
+    if(password==password_again){
+      dispatch(userSignup({username: email, email, password, password_again}))
+    }else{
+      setPassmatch(true)
+    }
   }
 
   if(user && userToken){
@@ -59,6 +64,8 @@ function UserSignup() {
       <div className="login-page">
       <div className="form-section">
       {status==401 ? <><div className="alert"><h6>Please Enter Valid Details</h6></div></> : <></>}
+      {passmatch ? <><div className="alert"><h6>Password did'n match</h6></div></> : <></>}
+
       {status==409 ? <><div className="alert"><h6>Email Allready Exist</h6></div></> : <></>}
         <h2>Signup To Connect</h2>
         <h4>Signup here to connect our best consultents</h4>
@@ -82,7 +89,7 @@ function UserSignup() {
         </div>
       </div>
       </div> */}
-      <p>don't have account <b><Link to={'/user-login'}>Login</Link></b> </p>
+      <p>Allready have account <b><Link to={'/user-login'}>Login</Link></b> </p>
       </div>
       <div className="image-section">
         <div className="image-part">
