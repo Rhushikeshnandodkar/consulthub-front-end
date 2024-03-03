@@ -129,9 +129,9 @@ function ConsultentDetail() {
               </ul>
             </div>
               <div className="minute-sections">
-              <input type="submit" onClick={feesValue}  className="btn" value={`${5} min`}/>
-              <input type="submit" className="btn" onClick={feesValue} value={`${15} min`}/>
+              <input type="submit" onClick={feesValue}  className="btn" value={`${15} min`}/>
               <input type="submit" className="btn" onClick={feesValue} value={`${30} min`}/>
+              <input type="submit" className="btn" onClick={feesValue} value={`${60} min`}/>
               </div>
               <div className="fees">
                 <b>Fees</b>

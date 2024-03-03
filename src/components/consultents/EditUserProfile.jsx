@@ -86,8 +86,8 @@ function EditUserProfile() {
             </div>
             <input type="text" placeholder='Enter Your Phone Number' name="phone_number" value={userInfo.phone_number} onChange={onChange}/>
             <div className="form-text">
-              <h4>Please Enter Your Phone Number</h4>
-              <p>Enter your phone number so that we can connect with you and make meeting between you and consultent you are looking for</p>
+              <h4>Please tell us about your interests</h4>
+              <p>select about your intesrests so that we can suggest you best consultants for your journey</p>
             </div>
            <div className="interests-section">
             <div className="interests">

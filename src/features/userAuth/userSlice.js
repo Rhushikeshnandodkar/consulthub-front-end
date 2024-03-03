@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url } from "../../components/common/api";
+import VarifyOtp from "../../components/consultents/VarifyOtp";
 export const userSignup = createAsyncThunk("user/singup", async(data, thunkAPI) =>{
     console.log(data)
     const config = {
@@ -146,6 +147,48 @@ export const createProfile = createAsyncThunk('user/createprofile', async(data, 
                 Accept: "application/json",
             }  ,
             body: JSON.stringify(data)
+        })
+        if(res.status == 200){
+            const response = await res.json()
+            return response
+        }else{
+            return thunkAPI.rejectWithValue(res.json())
+        }
+    }catch(err){
+        return thunkAPI.rejectWithValue(err)
+    }
+})
+export const getOtp = createAsyncThunk('user/getotp', async(data, thunkAPI) =>{
+    try{
+        const res = await fetch(`${url}/api/auth/get-otp`, {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            },
+            body : JSON.stringify(data)
+        })
+        if(res.status == 200){
+            const response = await res.json()
+            return response
+        }else{
+            return thunkAPI.rejectWithValue(res.json())
+        }
+    }catch(err){
+        return thunkAPI.rejectWithValue(err)
+    }
+})
+export const varifyOtp = createAsyncThunk('user/verifyotp', async(data, thunkAPI) =>{
+    try{
+        const res = await fetch(`${url}/api/auth/verify-otp`, {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                Accept: "application/json",
+            },
+            body : JSON.stringify(data)
         })
         if(res.status == 200){
             const response = await res.json()
@@ -322,6 +365,36 @@ const userSlice = createSlice({
             state.userProfile = action.payload
         })
         .addCase(createProfile.rejected, (state, action) => {
+            state.isLoading = false;
+            state.status = 409;
+            state = action.payload;
+        })
+        .addCase(getOtp.pending, (state) => {
+            state.status = null;
+            state.isLoading = true;
+        })
+        .addCase(getOtp.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.status = 200
+            console.log(action.payload)
+            state.userProfile = action.payload
+        })
+        .addCase(getOtp.rejected, (state, action) => {
+            state.isLoading = false;
+            state.status = 409;
+            state = action.payload;
+        })
+        .addCase(varifyOtp.pending, (state) => {
+            state.status = null;
+            state.isLoading = true;
+        })
+        .addCase(varifyOtp.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.status = 200
+            console.log(action.payload)
+            state.userProfile = action.payload
+        })
+        .addCase(varifyOtp.rejected, (state, action) => {
             state.isLoading = false;
             state.status = 409;
             state = action.payload;

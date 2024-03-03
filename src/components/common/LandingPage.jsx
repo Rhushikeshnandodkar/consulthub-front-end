@@ -3,6 +3,7 @@ import { LandingPageStyle } from './common.style'
 import Navbar from '../molecules/Navbar'
 import Instructor from '../../images/ankit1.jpeg'
 import Video from '../../images/phonevideo.mp4'
+import graphic from '../../images/cropped12.png'
 import Footer from '../molecules/Footer'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -33,12 +34,13 @@ function LandingPage() {
                </div>
             </div>
     </section>
+
     <section className="guarentee">
         <div className="left-side">
             <h3>Instant Appointment with our <b>Consultant</b></h3>
-            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>8+</b> varified consultent</p>
-            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>158+</b> successful mettings</p>
-            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>117+</b> satisfied customers</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>2+</b> Expert consultent</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>35+</b> successful meetings</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>19+</b> satisfied customers</p>
             <div className="btn"><Link to="/consultents">Book Consultants</Link></div>
         </div>
         <div className="right-side">
@@ -47,6 +49,36 @@ function LandingPage() {
         </video>
         </div>
     </section>
+    {/* <section class="heading">
+        <h2>Get Categories Of Consultants</h2>
+        <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
+    </section>
+    <section className="categories">
+        <div className="cat-left">
+            <img src={graphic} alt="" />
+        </div>
+        <div className="cat-right">
+            <div className="cat-boxes">
+                <div className="cat-box">
+                <svg xmlns="http:/pm /www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16"/></svg>
+                <h3>Coding</h3>
+                </div>
+                <div className="cat-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20.57 14.86L22 13.43L20.57 12L17 15.57L8.43 7L12 3.43L10.57 2L9.14 3.43L7.71 2L5.57 4.14L4.14 2.71L2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57L3.43 12L7 8.43L15.57 17L12 20.57L13.43 22l1.43-1.43L16.29 22l2.14-2.14l1.43 1.43l1.43-1.43l-1.43-1.43L22 16.29z"/></svg>
+                <h3>Healhcare</h3>
+                </div>
+                <div className="cat-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><mask id="ipTUserBusiness0"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><circle cx="24" cy="12" r="8" fill="#555"/><path d="M42 44c0-9.941-8.059-18-18-18S6 34.059 6 44"/><path fill="#555" d="m24 44l4-5l-4-13l-4 13z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTUserBusiness0)"/></svg>
+                <h3>Job Guidance</h3>
+                </div> 
+                <div className="cat-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 11v.01M5.173 8.378a3 3 0 1 1 4.656-1.377"/><path d="M16 4v3.803A6.019 6.019 0 0 1 18.658 11h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1.342c-.336.95-.907 1.8-1.658 2.473V19.5a1.5 1.5 0 0 1-3 0v-.583a6.04 6.04 0 0 1-1 .083h-4a6.04 6.04 0 0 1-1-.083v.583a1.5 1.5 0 0 1-3 0v-2.027A6 6 0 0 1 8.999 7h2.5z"/></g></svg>
+                <h3>Investment</h3>
+                </div> 
+            </div>
+        </div>
+    </section> */}
+
     <section class="heading">
         <h2>Our Upcomming Session</h2>
         <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
@@ -96,7 +128,7 @@ function LandingPage() {
                 <div class="schedule">
                     <p><b>Date : </b>{eventData.event_date} <br /> <b>Time : </b> {eventData.event_time}</p>
                 </div>
-                <div class="btn"><a href="/register">Register Now</a></div>
+                <div class="btn"><Link to={`/community`}>Get Updates</Link></div>
             </div>
         </section>
         </>

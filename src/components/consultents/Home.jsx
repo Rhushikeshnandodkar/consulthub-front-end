@@ -63,7 +63,7 @@ function Home() {
               
            </div>
             <div className="input-skill">
-            <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='  Search Ttitle'/>
+            <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='  Search Title'/>
             </div>
         </div>
         {/* <div className="button-section"><button className='btn'>Search</button></div> */}

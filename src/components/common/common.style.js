@@ -72,6 +72,38 @@ export const LandingPageStyle = styled.div`
     transition: 0.7s ease;
 }
 
+.categories{
+    display: flex;
+    width: 65%;
+    margin: 2% auto;
+    align-items: center;
+}
+.cat-left{
+    width: 75%;
+}
+.cat-left img{
+    width: 86%;
+}
+.cat-boxes{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.cat-right{
+    width: 70%;
+}
+.cat-box{
+    padding: 10%;
+    border: 1px solid #e3d8d8;
+    margin: 2%;
+    text-align: center;
+}
+.cat-box svg{
+    width: 50px;
+    color: #6000F9;
+    aspect-ratio: 1/1;
+    padding: 4% 0;
+}
+
 @media (max-width:1000px) {
     .text h1{
         font-size: 1.4rem;
@@ -110,6 +142,22 @@ export const LandingPageStyle = styled.div`
         margin-left: 0;
         margin-right: 0px;
     }
+    .categories .cat-left{
+        display: none;
+    }
+    .categories{
+        width: 90%;
+    }
+    .cat-right{
+        width: 100%;
+    }
+    .cat-box svg{
+        width: 30px;
+    }
+    .cat-box h3{
+        font-size: 1rem;
+        font-weight: 400;
+    }
 }
 
 .heading{
@@ -128,6 +176,9 @@ export const LandingPageStyle = styled.div`
     font-weight: 400;
     color: #6000F9;
 }
+
+
+
 @media (max-width:1000px) {
     .heading h2{
         font-size: 1.3rem;
@@ -305,6 +356,11 @@ export const LandingPageStyle = styled.div`
 }
 .right-side{
     margin-top: 1%;
+}
+@media (max-width:1600px) {
+    .session-section{
+        width: 70%;
+    }
 }
 @media (max-width:1000px) {
     .r-side ul li h4{

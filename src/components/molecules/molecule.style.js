@@ -114,6 +114,11 @@ export const NavbarStyle = styled.div`
    .response-bar{
     left: -100%;
    }
+   @media screen and (max-width:1600px) {
+    .navbar{
+    grid-template-columns: 17% 63% 20%;
+   }
+}
    @media screen and (max-width:1000px) {
     .menu-section ul{
         display: none;

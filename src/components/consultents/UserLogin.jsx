@@ -60,7 +60,7 @@ function UserLogin() {
         <input type="password" id='password' name="password" placeholder='Enter Your Password' value={formData.password} onChange={onChange}/>
         <button type='submit'>Login Now</button>
       </form>
-      {/* <p>other login options</p>
+      <p>other login options</p>
       <div className="google" onClick={() => googleLogin()}>
       <div className="google-login">
         <div className="google-image">
@@ -70,7 +70,7 @@ function UserLogin() {
           <p>Login With Google</p>
         </div>
       </div>
-      </div> */}
+      </div>
       <p>don't have account <b><Link to={'/user-signup'}>Signup</Link></b></p>
       </div>
       <div className="image-section">

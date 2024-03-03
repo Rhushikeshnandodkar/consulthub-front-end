@@ -17,6 +17,8 @@ import About from './components/common/About';
 import Contact from './components/common/Contact';
 import Community from './components/common/Community';
 import Notfound from './components/common/Notfound';
+import GetOtp from './components/consultents/GetOtp';
+import VarifyOtp from './components/consultents/VarifyOtp';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -35,6 +37,9 @@ function App() {
       <Route exact path='about' element={<About/>}/>
       <Route exact path='contact' element={<Contact/>}/>
       <Route exact path='community' element={<Community/>}/>
+      <Route exact path='get-otp' element={<GetOtp/>}/>
+      <Route exact path='varify-otp' element={<VarifyOtp/>}/>
+
       <Route path="*" element={<Notfound />}/>
 
     </Routes>
