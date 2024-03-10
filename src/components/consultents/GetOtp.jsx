@@ -49,7 +49,7 @@ function GetOtp() {
         <h4>Login here to connect our best consultents</h4>
         <h3><b>Best of Luck</b></h3>
       <form action="" onSubmit={handleSubmit}>
-        <input type="text" id='username' placeholder='Enter Your Phone number' name='phone' value={formData.phone} onChange={onChange}/>
+        <input type="phone" id='username' placeholder='Enter Your Phone number' name='phone' value={formData.phone} onChange={onChange}/>
         <button type='submit'>Get Otp Now</button>
       </form>
       </div>

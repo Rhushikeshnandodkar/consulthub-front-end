@@ -23,7 +23,6 @@ function UserLogin() {
   const SendToken = async (tokenInfo) => {
     console.log(tokenInfo.access_token)
     dispatch(googleUserLogin(tokenInfo.access_token))
-    return navigate(-1)
   }
   const [isactive, setIsactive] = useState(false)
   const[formData, setFormData] = useState({
@@ -39,10 +38,10 @@ function UserLogin() {
     const {email, password} = formData
     dispatch(userLogin({email, password})) 
   }
+  if(status == 200){
+    return navigate("/get-otp")
+  }
   
-    if(user&& userToken){
-      return navigate("/consultents")
-    }
   
 
   return (

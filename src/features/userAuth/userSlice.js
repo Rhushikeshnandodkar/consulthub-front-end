@@ -173,7 +173,7 @@ export const getOtp = createAsyncThunk('user/getotp', async(data, thunkAPI) =>{
             const response = await res.json()
             return response
         }else{
-            return thunkAPI.rejectWithValue(res.json())
+            return thunkAPI.rejectWithValue(res.status)
         }
     }catch(err){
         return thunkAPI.rejectWithValue(err)
@@ -194,7 +194,7 @@ export const varifyOtp = createAsyncThunk('user/verifyotp', async(data, thunkAPI
             const response = await res.json()
             return response
         }else{
-            return thunkAPI.rejectWithValue(res.json())
+            return thunkAPI.rejectWithValue(res.status)
         }
     }catch(err){
         return thunkAPI.rejectWithValue(err)
@@ -372,11 +372,12 @@ const userSlice = createSlice({
         .addCase(getOtp.pending, (state) => {
             state.status = null;
             state.isLoading = true;
+            state.status = null
         })
         .addCase(getOtp.fulfilled, (state, action) => {
             state.isLoading = false;
             state.status = 200
-            console.log(action.payload)
+            console.log(action)
             state.userProfile = action.payload
         })
         .addCase(getOtp.rejected, (state, action) => {
@@ -396,7 +397,8 @@ const userSlice = createSlice({
         })
         .addCase(varifyOtp.rejected, (state, action) => {
             state.isLoading = false;
-            state.status = 409;
+            console.log(action.payload)
+            state.status = action.payload;
             state = action.payload;
         });
     }

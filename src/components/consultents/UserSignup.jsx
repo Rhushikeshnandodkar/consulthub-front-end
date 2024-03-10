@@ -22,6 +22,7 @@ function UserSignup() {
   const SendToken = async (tokenInfo) => {
     console.log(tokenInfo.access_token)
     dispatch(googleUserSignup(tokenInfo.access_token))
+
   }
 
   const responseMessage = (response) => {
@@ -48,15 +49,17 @@ function UserSignup() {
     const {email, password, password_again} = formData
     if(password==password_again){
       dispatch(userSignup({username: email, email, password, password_again}))
+
+    if(status==200){
+      return navigate("/get-otp")
+    }
     }else{
       setPassmatch(true)
     }
   }
-
-  if(user && userToken){
-    return navigate("/create-profile")
+  if(status==200){
+    return navigate("/get-otp")
   }
-
   return (
     <div>
       <Navbar/>
@@ -78,7 +81,7 @@ function UserSignup() {
         <input type="password" id='password_again' name="password_again" placeholder='Enter Your Password Again' value={formData.password_again} onChange={onChange}/>
         <button type='submit'>Signup Now</button>
       </form>
-      {/* <p>other login options</p>
+      <p>other login options</p>
       <div className="google" onClick={() => googleLogin()}>
       <div className="google-login">
         <div className="google-image">
@@ -88,7 +91,7 @@ function UserSignup() {
           <p>Login With Google</p>
         </div>
       </div>
-      </div> */}
+      </div>
       <p>Allready have account <b><Link to={'/user-login'}>Login</Link></b> </p>
       </div>
       <div className="image-section">

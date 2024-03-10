@@ -26,10 +26,14 @@ function VarifyOtp() {
     e.preventDefault();
     const {otp} = formData
     dispatch(varifyOtp({otp})) 
+    if (status==200){
+      return navigate('/create-profile')
+    }
   }
     if(!user&& !userToken){
       return navigate("/user-login")
     }
+
   
   return (
     <div>
@@ -37,8 +41,8 @@ function VarifyOtp() {
       <LoginPageStyle>
       <div className="login-page">
       <div className="form-section">
-        {status==401 ? <><div className="alert"><h6>Please Enter Valid Details</h6></div></> : <></>}
-        {status==409 ? <><div className="alert"><h6>This phone number allredy taken</h6></div></> : <></>}
+        {status==401 ? <><div className="alert"><h6>Please enter valid otp</h6></div></> : <></>}
+        {/* {status==409 ? <><div className="alert"><h6>This phone number allredy taken</h6></div></> : <></>} */}
 
         <h2>Enter Otp</h2>
         <h4>Enter your otp to save your mobile number</h4>
