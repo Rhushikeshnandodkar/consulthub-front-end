@@ -3,7 +3,9 @@ import { LandingPageStyle } from './common.style'
 import Navbar from '../molecules/Navbar'
 import Instructor from '../../images/ankit1.jpeg'
 import Video from '../../images/phonevideo.mp4'
-import graphic from '../../images/cropped12.png'
+import consultimage from '../../images/consulth.png'
+import graphic from '../../images/21.png'
+
 import Footer from '../molecules/Footer'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,7 +43,7 @@ function LandingPage() {
             <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>2+</b> Expert consultent</p>
             <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>35+</b> successful meetings</p>
             <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#6000f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 8.75l3.5 3.5l7-7.5"/></svg><b>19+</b> satisfied customers</p>
-            <div className="btn"><Link to="/consultents">Book Consultants</Link></div>
+            <div className="btn"><Link to="/consultents">Book Consultant</Link></div>
         </div>
         <div className="right-side">
         <video autoPlay loop muted>
@@ -49,13 +51,13 @@ function LandingPage() {
         </video>
         </div>
     </section>
-    {/* <section class="heading">
+    <section class="heading">
         <h2>Get Categories Of Consultants</h2>
         <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
     </section>
     <section className="categories">
         <div className="cat-left">
-            <img src={graphic} alt="" />
+            <img src={consultimage} alt="" />
         </div>
         <div className="cat-right">
             <div className="cat-boxes">
@@ -77,16 +79,47 @@ function LandingPage() {
                 </div> 
             </div>
         </div>
-    </section> */}
+    </section>
 
+    <section className="why-consulthub-section">
     <section class="heading">
+        <h2>Why to choose consulthub</h2>
+        <p>Get solutions to your<b>Personalized</b> problems with our experts.</p>
+    </section>
+        <div className="why-consulthub">
+            <div className="left-side">
+                <div className="left-card">
+                    <h3>How to get into top companies as a developer?</h3>
+                    <p>Consultation about how to get into multinational comanies by top mnc workers</p>
+                </div>
+                <div className="left-card">
+                    <h3>How to crack top level hackathons?</h3>
+                    <p>get guidance from people who cracked internation hackathons</p>
+                </div>
+                <div className="left-card">
+                    <h3>Guidance about coding?</h3>
+                    <p>get perfect raodmap for your coding journey from our experts</p>
+                </div>
+                <div className="left-card">
+                    <h3>Which technology is better for you to learn?</h3>
+                    <p>in the ocean of technologies which is best option for your aptitude</p>
+                </div>
+            </div>
+            <div className="right-side">
+               <img src={graphic} alt="" />
+            </div>
+        </div>
+    </section>
+
+
+
+   {eventLoading ? <p></p>: 
+    <>{eventData && 
+        <>
+            <section class="heading">
         <h2>Our Upcomming Session</h2>
         <p>We are going to host a <b>Free</b> online session with industry expert for you.</p>
     </section>
-
-   {eventLoading ? <p>Loading...</p>: 
-    <>{eventData && 
-        <>
             
         <section class="session-section" id='upsession'>
             <div class="left-side">

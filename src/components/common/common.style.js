@@ -82,7 +82,7 @@ export const LandingPageStyle = styled.div`
     width: 75%;
 }
 .cat-left img{
-    width: 86%;
+    width: 85%;
 }
 .cat-boxes{
     display: grid;
@@ -199,6 +199,72 @@ export const LandingPageStyle = styled.div`
     }
 }
 
+/* Why to choose us section css */
+.why-consulthub-section{
+    background-color: #f6f9fc;
+}
+.why-consulthub{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 75%;
+    margin: auto;
+    padding: 0% 0;
+    align-items: center;
+}
+.why-consulthub-section .heading{
+    padding-top: 2%;
+}
+.left-side .left-card{
+    background-color: white;
+    padding: 4%;
+    margin: 2% 0;
+}
+.left-card h3{
+    font-size: 1.3rem;
+    /* color: #000000cf; */
+    font-weight: 600;
+}
+.left-card p{
+    font-size: 1.1rem;
+    margin-top: 1%;
+}
+.why-consulthub .right-side{
+    /* padding: 0 9%; */
+    /* margin-left: 10%; */
+}
+.why-consulthub .right-side h2{
+    color: #6000F9;
+    font-size: 2rem;
+}
+.why-consulthub .right-side img{
+    /* padding: 0 9%; */
+    width: 100%;
+}
+@media (max-width:1000px) {
+    .why-consulthub-section{
+        padding-bottom: 4%;
+    }
+    .why-consulthub{
+        grid-template-columns: auto;
+        width: 85%;
+    }
+    .left-card h3{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .left-card p{
+        font-size: 0.9rem;
+    }
+    .why-consulthub-section .heading{
+    padding-top: 6%;
+    padding-bottom: 5%;
+    }
+    .why-consulthub .right-side img{
+    /* padding: 0 9%; */
+    /* width: 100%; */
+    display: none;
+    }
+}
 /* guarentee section css  */
 .guarentee{
     display: grid;

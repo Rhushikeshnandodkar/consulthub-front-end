@@ -3,6 +3,7 @@ import { url } from "../../components/common/api";
 
 export const fetchEventData = createAsyncThunk('fetchEventData', async() =>{
     const response = await fetch(`${url}/api/consultent/upcomming-event`)
+    console.log(response)
     return response.json()
 })
 export const fetchCommunity = createAsyncThunk('fetchCommunity', async() =>{

@@ -294,6 +294,7 @@ const userSlice = createSlice({
             state.isLoading = false
             state.userToken = localStorage.getItem("userToken")
             state.isAuthenticated = true;
+            state.status = 200
         })
         .addCase(userSignup.rejected, (state, {payload}) => {
             state.isLoading = false

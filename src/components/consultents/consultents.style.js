@@ -5,13 +5,14 @@ export const ConsultentListStyle = styled.div`
     width: 75%;
     margin: auto;
     font-family: 'Poppins', sans-serif;
+
 }
 .filters-section{
     border: 1px solid #fff8f8;
     box-shadow: 0.2px 0.2px 1px 1px #a5a4a41a;
     padding: 5% 0% 15% 2%; 
     width: 90%;
-    display: none;
+    display: block;
 }
 .filter-box{
     margin-left: 4%;

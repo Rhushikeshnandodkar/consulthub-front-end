@@ -21,7 +21,6 @@ function UserLogin() {
     onError : (error) => console.log(error)
   })
   const SendToken = async (tokenInfo) => {
-    console.log(tokenInfo.access_token)
     dispatch(googleUserLogin(tokenInfo.access_token))
   }
   const [isactive, setIsactive] = useState(false)
@@ -39,7 +38,7 @@ function UserLogin() {
     dispatch(userLogin({email, password})) 
   }
   if(status == 200){
-    return navigate("/get-otp")
+    return navigate("/")
   }
   
   

@@ -77,9 +77,12 @@ function ConsultentDetail() {
         alert("please select time slot")
       }
       else{
-        dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
-        return navigate("/thank-you")
-
+        if(user["is_profile_completed"]){
+          dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
+          return navigate("/thank-you")
+        }else{
+          return navigate("/get-otp")
+        }
       }
     }
   }

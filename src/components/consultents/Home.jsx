@@ -66,11 +66,13 @@ function Home() {
             <input value={skillInput} onChange={handleChangeSkill} type="text" placeholder='  Search Title'/>
             </div>
         </div>
-        {/* <div className="button-section"><button className='btn'>Search</button></div> */}
+      
       </div>
     </div>
     </SearchStyle>
-        <div className="main-section">
+
+          
+        <div className="main-section">          
           <div className="cards-section">
             <div className="all-cards">
               <div className="cards-list">

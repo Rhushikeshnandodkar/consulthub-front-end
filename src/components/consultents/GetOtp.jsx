@@ -45,9 +45,9 @@ function GetOtp() {
         {status==401 ? <><div className="alert"><h6>Please Enter Valid Details</h6></div></> : <></>}
         {status==409 ? <><div className="alert"><h6>This phone number allredy taken</h6></div></> : <></>}
 
-        <h2>Login To Connect</h2>
-        <h4>Login here to connect our best consultents</h4>
-        <h3><b>Best of Luck</b></h3>
+        <h2>Enter phone number</h2>
+        <h4>Enter valid phone number</h4>
+        {/* <h3><b>Best of Luck</b></h3> */}
       <form action="" onSubmit={handleSubmit}>
         <input type="phone" id='username' placeholder='Enter Your Phone number' name='phone' value={formData.phone} onChange={onChange}/>
         <button type='submit'>Get Otp Now</button>

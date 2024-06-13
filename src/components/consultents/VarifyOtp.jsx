@@ -46,10 +46,10 @@ function VarifyOtp() {
 
         <h2>Enter Otp</h2>
         <h4>Enter your otp to save your mobile number</h4>
-        <h3><b>Best of Luck</b></h3>
+        {/* <h3><b>Best of Luck</b></h3> */}
       <form action="" onSubmit={handleSubmit}>
         <input type="text" id='username' placeholder='Enter Otp e.g. 343245' name='otp' value={formData.otp} onChange={onChange}/>
-        <button type='submit'>Get Otp Now</button>
+        <button type='submit'>Submit otp now</button>
       </form>
       </div>
 
