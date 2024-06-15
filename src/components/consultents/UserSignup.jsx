@@ -67,7 +67,7 @@ function UserSignup() {
       <div className="login-page">
       <div className="form-section">
       {status==401 ? <><div className="alert"><h6>Please Enter Valid Details</h6></div></> : <></>}
-      {passmatch ? <><div className="alert"><h6>Password did'n match</h6></div></> : <></>}
+      {passmatch ? <><div className="alert"><h6>Password didn't match</h6></div></> : <></>}
 
       {status==409 ? <><div className="alert"><h6>Email Allready Exist</h6></div></> : <></>}
         <h2>Signup To Connect</h2>

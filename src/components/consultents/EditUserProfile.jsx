@@ -55,13 +55,13 @@ function EditUserProfile() {
     dispatch(getInterests(e.target.value))
   }
   const handleSubmit = (e) =>{
-    e.preventDefault()
+    // e.preventDefault()
     const {first_name, last_name, interests} = userInfo
     dispatch(createProfile({first_name, last_name, interests}))
-    if(status == 200){
-      return navigate("/your-profile")
     }
-  }
+      if(status == 200){
+        return navigate("/your-profile")
+      }
 
 
 
@@ -74,7 +74,7 @@ function EditUserProfile() {
         </div>
         <div className="form-section">
         {status==409 ? <><div className="alert"><h6>Phone number allready exists</h6></div></> : <></>}
-        {/* {status==200 ? <><div className="success"><h6>Data Saved Successfully</h6></div></> : <></>} */}
+        {status==200 ? <><div className="success"><h6>Data Saved Successfully</h6></div></> : <></>}
 
           <form action="" onSubmit={handleSubmit}>
             <div className="first-line">

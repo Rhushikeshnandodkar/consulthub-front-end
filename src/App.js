@@ -19,6 +19,7 @@ import Community from './components/common/Community';
 import Notfound from './components/common/Notfound';
 import GetOtp from './components/consultents/GetOtp';
 import VarifyOtp from './components/consultents/VarifyOtp';
+import BookingForm from './components/consultents/BookingForm';
 function App() {
   const dispatch = useDispatch()
   useEffect(() =>{
@@ -39,7 +40,7 @@ function App() {
       <Route exact path='community' element={<Community/>}/>
       <Route exact path='get-otp' element={<GetOtp/>}/>
       <Route exact path='varify-otp' element={<VarifyOtp/>}/>
-
+      <Route exact path='bookconsult/:consultId/:consultName' element={<BookingForm/>}/>
       <Route path="*" element={<Notfound />}/>
 
     </Routes>

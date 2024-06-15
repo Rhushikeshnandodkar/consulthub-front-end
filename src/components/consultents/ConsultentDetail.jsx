@@ -67,24 +67,43 @@ function ConsultentDetail() {
       setClicked(true)
     }
   }
+  // const bookMeetingbutton = () =>{
+  //   if(!userToken || !isAuthenticated){
+  //     return navigate("/user-signup")
+  //   }else{
+  //     console.log(user.id)
+  //     setFormData()
+  //     if (!clicked){
+  //       alert("please select time slot")
+  //     }
+  //     else{
+  //       if(user["is_profile_completed"]){
+  //         dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
+  //         return navigate("/thank-you")
+  //       }else{
+  //         return navigate("/get-otp")
+  //       }
+  //     }
+  //   }
+  // }
   const bookMeetingbutton = () =>{
     if(!userToken || !isAuthenticated){
-      return navigate("/user-signup")
-    }else{
-      console.log(user.id)
-      setFormData()
-      if (!clicked){
-        alert("please select time slot")
-      }
-      else{
-        if(user["is_profile_completed"]){
-          dispatch(bookMeeting({"booking_user" : user.id, "consultent": singleconsultent.id, "amount": fees}))
-          return navigate("/thank-you")
+          return navigate("/user-signup")
         }else{
-          return navigate("/get-otp")
+          console.log(user.id)
+          setFormData()
+          if (!clicked){
+            alert("please select time slot")
+          }
+          else{
+            if(user["is_profile_completed"]){
+              return navigate(`/bookconsult/${singleconsultent.id}/${singleconsultent.consultent_name}`)
+            }else{
+              return navigate("/get-otp")
+            }
+          }
         }
-      }
-    }
+    
   }
   return (
     <div>

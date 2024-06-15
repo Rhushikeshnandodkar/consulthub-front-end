@@ -82,9 +82,10 @@ export const NavbarStyle = styled.div`
     border: 1px solid #6000F9;
     background-color: white;
     border-radius: 2px;
-    font-weight: 500;
+    font-weight: 400;
     transition: 1s ease;
     cursor: pointer;
+        font-family: 'Poppins', sans-serif;
    }
    .button-section button:hover{
     color: white;
@@ -94,10 +95,10 @@ export const NavbarStyle = styled.div`
     color: white;
    }
    .button-section button a{
-    color: 6000F9;
+    color: #6000F9;
     text-decoration: none;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+    font-family:  'DM Sans', sans-serif;
    }
    .burger{
     display: none;

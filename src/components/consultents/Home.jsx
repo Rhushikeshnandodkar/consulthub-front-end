@@ -69,9 +69,7 @@ function Home() {
       
       </div>
     </div>
-    </SearchStyle>
-
-          
+    </SearchStyle> 
         <div className="main-section">          
           <div className="cards-section">
             <div className="all-cards">

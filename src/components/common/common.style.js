@@ -54,6 +54,7 @@ export const LandingPageStyle = styled.div`
     border-radius: 2px;
     border: 1px solid #6000F9;
     transition: 0.7s ease;
+    font-family: 'Poppins', sans-serif;
 }
 .btn a:hover{
     background-color: transparent;

@@ -17,6 +17,7 @@ export const bookMeeting = createAsyncThunk("booking/bookMeet", async(data, thun
             data
         }
         const response = await axios(config)
+        console.log(response)
         return response.data
     }catch(err){
         return thunkAPI.rejectWithValue(err)
@@ -24,7 +25,8 @@ export const bookMeeting = createAsyncThunk("booking/bookMeet", async(data, thun
 })
 const initialState = {
     isBooked : false,
-    error : false
+    error : false,
+    status: null
 }
 const bookingSlice = createSlice({
     name: "bookings",
@@ -35,9 +37,11 @@ const bookingSlice = createSlice({
         })
         .addCase(bookMeeting.fulfilled, (state, {payload}) => {
             state.isBooked = true
+            state.status = 200
         })
         .addCase(bookMeeting.rejected, (state, {payload}) => {
             state.error = true
+            state.status = 401
         })
     }
 })
