@@ -1,7 +1,7 @@
 
 # ConsultHub Frontend
 
-**ConsultConnect Frontend** is the client-side application for the Consulthub platform, designed to connect users seeking consultation with professional consultants. This application is built using React.js and Redux Toolkit, ensuring a responsive and interactive user experience.
+**ConsultConnect Frontend** is the client-side application for the Consulthub platform, designed to connect users who are seeking consultation with professional consultants. This application is built using React.js and Redux Toolkit, ensuring a responsive and interactive user experience.
 
 ## Features
 
